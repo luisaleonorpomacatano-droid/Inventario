@@ -22,15 +22,29 @@ const DB = {
         // Cargar script de Supabase de CDN
         await this.loadScript('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2');
 
-        const url = 'https://jsyvxgztrpotexsfqpji.supabase.co';
+        let url = 'https://jsyvxgztrpotexsfqpji.supabase.co';
         let key = localStorage.getItem('supabase_anon_key');
+
+        // Intentar cargar la Anon Key desde config/config.json
+        try {
+            const response = await fetch('config/config.json');
+            if (response.ok) {
+                const config = await response.json();
+                if (config.supabaseAnonKey && config.supabaseAnonKey !== 'TU_SUPABASE_ANON_KEY_AQUI') {
+                    key = config.supabaseAnonKey.trim();
+                    url = config.supabaseUrl || url;
+                }
+            }
+        } catch (e) {
+            console.log('No se pudo cargar la configuración de config/config.json, usando almacenamiento local:', e);
+        }
 
         if (!key) {
             await new Promise((resolve) => {
                 setTimeout(() => {
                     swal({
                         title: 'Conexión a Supabase',
-                        text: 'Ingresa tu anon public key para sincronizar el inventario en la nube de Supabase:',
+                        text: 'Ingresa tu anon public key para sincronizar el inventario en la nube de Supabase (o configúrala en config/config.json):',
                         type: 'input',
                         showCancelButton: false,
                         closeOnConfirm: true,
