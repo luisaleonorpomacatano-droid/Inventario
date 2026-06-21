@@ -4,6 +4,21 @@
 -- cargar un inventario inicial realista de datos.
 -- =========================================================================
 
+-- 0. Ajustes y preparación de tablas para desarrollo (Desactivar RLS)
+ALTER TABLE usuarios ADD COLUMN IF NOT EXISTS ubicacion VARCHAR(150);
+
+ALTER TABLE roles DISABLE ROW LEVEL SECURITY;
+ALTER TABLE areas DISABLE ROW LEVEL SECURITY;
+ALTER TABLE categorias_activos DISABLE ROW LEVEL SECURITY;
+ALTER TABLE proveedores DISABLE ROW LEVEL SECURITY;
+ALTER TABLE usuarios DISABLE ROW LEVEL SECURITY;
+ALTER TABLE activos_tecnologicos DISABLE ROW LEVEL SECURITY;
+ALTER TABLE asignaciones DISABLE ROW LEVEL SECURITY;
+ALTER TABLE mantenimientos DISABLE ROW LEVEL SECURITY;
+ALTER TABLE solicitudes DISABLE ROW LEVEL SECURITY;
+ALTER TABLE historial_activos DISABLE ROW LEVEL SECURITY;
+ALTER TABLE documentos_activos DISABLE ROW LEVEL SECURITY;
+
 -- 1. Insertar Áreas (si no existen)
 INSERT INTO areas (nombre) VALUES 
 ('Soporte TI'), 
