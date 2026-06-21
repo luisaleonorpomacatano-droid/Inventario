@@ -214,10 +214,10 @@
     </section>
 
     <script>
-        $(document).ready(function() {
+        $(document).ready(async function() {
             function renderWarranties() {
-                const assets = DB.getAssets();
-                const providers = DB.getProviders();
+                const assets = await DB.getAssets();
+                const providers = await DB.getProviders();
                 const $tbody = $('#table-warranties-body');
                 $tbody.empty();
 

@@ -260,9 +260,9 @@
     </section>
 
     <script>
-        $(document).ready(function() {
-            function renderTable() {
-                const categories = DB.getCategories();
+        $(document).ready(async function() {
+            async function renderTable() {
+                const categories = await DB.getCategories();
                 const $tbody = $('#table-categories-body');
                 $tbody.empty();
 
@@ -286,29 +286,29 @@
                 });
             }
 
-            renderTable();
+            await await renderTable();
 
-            $('#form-add-category').on('submit', function(e) {
+            $('#form-add-category').on('submit', async function(e) {
                 e.preventDefault();
                 const newCat = {
                     code: $('#codeCategory').val().trim(),
                     name: $('#nameCategory').val().trim()
                 };
 
-                const exists = DB.getCategories().some(c => c.code.toLowerCase() === newCat.code.toLowerCase() || c.name.toLowerCase() === newCat.name.toLowerCase());
+                const exists = await DB.getCategories().some(c => c.code.toLowerCase() === newCat.code.toLowerCase() || c.name.toLowerCase() === newCat.name.toLowerCase());
                 if (exists) {
                     swal('Error', 'Ya existe una categoría con ese código o nombre.', 'error');
                     return;
                 }
 
-                DB.saveCategory(newCat);
+                await DB.saveCategory(newCat);
                 swal('¡Registrado!', 'Categoría guardada exitosamente.', 'success');
                 this.reset();
-                renderTable();
+                await await renderTable();
                 $('#btn-list-tab').click();
             });
 
-            $(document).on('click', '.btn-delete-category', function() {
+            $(document).on('click', '.btn-delete-category', async function() {
                 const catId = $(this).data('id');
                 swal({
                     title: '¿Estás seguro?',
@@ -317,19 +317,19 @@
                     showCancelButton: true,
                     confirmButtonText: 'Sí, eliminar',
                     cancelButtonText: 'Cancelar'
-                }, function(isConfirm) {
+                }, async function(isConfirm) {
                     if (isConfirm) {
-                        let categories = DB.getCategories();
+                        let categories = await DB.getCategories();
                         categories = categories.filter(c => c.id !== catId.toString());
-                        DB.setData('it_categories', categories);
-                        renderTable();
+                        
+                        await await renderTable();
                         swal('Eliminada', 'La categoría ha sido eliminada.', 'success');
                     }
                 });
             });
 
             $('#btn-list-tab').on('click', function() {
-                renderTable();
+                await await renderTable();
             });
         });
     </script>

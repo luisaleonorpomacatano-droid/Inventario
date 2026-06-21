@@ -328,10 +328,10 @@
     </div>
 
     <script>
-        $(document).ready(function() {
-            function loadDropdowns() {
-                const assets = DB.getAssets();
-                const employees = DB.getEmployees();
+        $(document).ready(async function() {
+            async function loadDropdowns() {
+                const assets = await DB.getAssets();
+                const employees = await DB.getEmployees();
 
                 // Filtrar solo activos disponibles
                 const availableAssets = assets.filter(a => a.status === 'Disponible');
@@ -353,10 +353,10 @@
                 });
             }
 
-            function renderTable() {
-                const assignments = DB.getAssignments();
-                const assets = DB.getAssets();
-                const employees = DB.getEmployees();
+            async function renderTable() {
+                const assignments = await DB.getAssignments();
+                const assets = await DB.getAssets();
+                const employees = await DB.getEmployees();
                 const $tbody = $('#table-assignments-body');
                 $tbody.empty();
 
@@ -398,11 +398,11 @@
             }
 
             // Inicializar vistas
-            loadDropdowns();
-            renderTable();
+            await loadDropdowns();
+            await await renderTable();
 
             // Submit de Asignación
-            $('#form-add-assignment').on('submit', function(e) {
+            $('#form-add-assignment').on('submit', async function(e) {
                 e.preventDefault();
                 const assetId = $('#selectAsset').val();
                 if(!assetId) {
@@ -426,27 +426,27 @@
                     docRef: docRef
                 };
 
-                DB.saveAssignment(newAsg);
+                await DB.saveAssignment(newAsg);
                 swal('¡Equipo Asignado!', `Se registró el acta ${docRef} y se cambió el estado del equipo a Asignado.`, 'success');
                 
                 this.reset();
-                loadDropdowns();
-                renderTable();
+                await loadDropdowns();
+                await await renderTable();
                 
                 // Ir a la pestaña listado
                 $('#btn-list-tab').click();
             });
 
             // Imprimir Acta de Entrega
-            $(document).on('click', '.btn-print-acta', function() {
+            $(document).on('click', '.btn-print-acta', async function() {
                 const asgId = $(this).data('id');
-                const assignments = DB.getAssignments();
+                const assignments = await DB.getAssignments();
                 const asg = assignments.find(a => a.id === asgId.toString());
 
                 if (asg) {
-                    const asset = DB.getAssets().find(a => a.id === asg.assetId);
-                    const emp = DB.getEmployees().find(e => e.id === asg.employeeId);
-                    const prov = DB.getProviders().find(p => p.id === (asset ? asset.providerId : ''));
+                    const asset = await DB.getAssets().find(a => a.id === asg.assetId);
+                    const emp = await DB.getEmployees().find(e => e.id === asg.employeeId);
+                    const prov = await DB.getProviders().find(p => p.id === (asset ? asset.providerId : ''));
 
                     const printArea = $('#print-area');
                     printArea.html(`
@@ -495,7 +495,7 @@
             });
 
             // Registrar Devolución de Activo
-            $(document).on('click', '.btn-devolution', function() {
+            $(document).on('click', '.btn-devolution', async function() {
                 const assetId = $(this).data('assetid').toString();
                 const asgId = $(this).data('id').toString();
 
@@ -506,7 +506,7 @@
                     showCancelButton: true,
                     closeOnConfirm: false,
                     inputPlaceholder: 'Ej: Pantalla en perfecto estado, cargador original devuelto'
-                }, function(inputValue) {
+                }, async function(inputValue) {
                     if (inputValue === false) return false;
                     
                     const notes = inputValue.trim() || 'Devolución sin observaciones';
@@ -522,14 +522,14 @@
 
                     swal('¡Devuelto!', 'El equipo tecnológico se ha registrado como devuelto y vuelve a estar Disponible para asignación.', 'success');
                     
-                    loadDropdowns();
-                    renderTable();
+                    await loadDropdowns();
+                    await await renderTable();
                 });
             });
 
             // Recargar al hacer clic en pestaña
             $('#btn-list-tab').on('click', function() {
-                renderTable();
+                await await renderTable();
             });
         });
     </script>

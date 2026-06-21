@@ -239,8 +239,8 @@
     </section>
 
     <script>
-        $(document).ready(function() {
-            const stats = DB.getStats();
+        $(document).ready(async function() {
+            const stats = await DB.getStats();
             $('#stat-total').text(stats.total);
             $('#stat-assigned').text(stats.assigned);
             $('#stat-available').text(stats.available);
@@ -248,10 +248,10 @@
             $('#stat-warranties').text(stats.warrantiesExpired + stats.warrantiesToExpire);
             $('#stat-requests').text(stats.pendingRequests);
 
-            const assets = DB.getAssets();
-            const employees = DB.getEmployees();
-            const assignments = DB.getAssignments();
-            const maintenance = DB.getMaintenance();
+            const assets = await DB.getAssets();
+            const employees = await DB.getEmployees();
+            const assignments = await DB.getAssignments();
+            const maintenance = await DB.getMaintenance();
             
             let logs = [];
             

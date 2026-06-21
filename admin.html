@@ -299,7 +299,7 @@
     </section>
 
     <script>
-        $(document).ready(function() {
+        $(document).ready(async function() {
             // Inicializar localStorage de admins si no existe
             if(!localStorage.getItem('it_admins')) {
                 const defaultAdmins = [
@@ -313,7 +313,7 @@
                 return JSON.parse(localStorage.getItem('it_admins')) || [];
             }
 
-            function renderTable() {
+            async function renderTable() {
                 const admins = getAdmins();
                 const $tbody = $('#table-admins-body');
                 $tbody.empty();
@@ -335,9 +335,9 @@
                 });
             }
 
-            renderTable();
+            await await renderTable();
 
-            $('#form-add-admin').on('submit', function(e) {
+            $('#form-add-admin').on('submit', async function(e) {
                 e.preventDefault();
                 const admins = getAdmins();
                 const newAdmin = {
@@ -360,11 +360,11 @@
                 localStorage.setItem('it_admins', JSON.stringify(admins));
                 swal('¡Éxito!', 'El nuevo usuario de soporte técnico ha sido registrado.', 'success');
                 this.reset();
-                renderTable();
+                await await renderTable();
                 $('#btn-list-tab').click();
             });
 
-            $(document).on('click', '.btn-delete-admin', function() {
+            $(document).on('click', '.btn-delete-admin', async function() {
                 const id = $(this).data('id').toString();
                 const admins = getAdmins();
                 if(admins.length <= 1) {
@@ -379,18 +379,18 @@
                     showCancelButton: true,
                     confirmButtonText: 'Sí, eliminar',
                     cancelButtonText: 'Cancelar'
-                }, function(isConfirm) {
+                }, async function(isConfirm) {
                     if (isConfirm) {
                         const filtered = admins.filter(a => a.id !== id);
                         localStorage.setItem('it_admins', JSON.stringify(filtered));
-                        renderTable();
+                        await await renderTable();
                         swal('Eliminado', 'La cuenta ha sido eliminada.', 'success');
                     }
                 });
             });
 
             $('#btn-list-tab').on('click', function() {
-                renderTable();
+                await await renderTable();
             });
         });
     </script>

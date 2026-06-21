@@ -284,9 +284,9 @@
     </section>
 
     <script>
-        $(document).ready(function() {
-            function renderTable() {
-                const providers = DB.getProviders();
+        $(document).ready(async function() {
+            async function renderTable() {
+                const providers = await DB.getProviders();
                 const $tbody = $('#table-providers-body');
                 $tbody.empty();
 
@@ -313,9 +313,9 @@
                 });
             }
 
-            renderTable();
+            await await renderTable();
 
-            $('#form-add-provider').on('submit', function(e) {
+            $('#form-add-provider').on('submit', async function(e) {
                 e.preventDefault();
                 const newProv = {
                     ruc: $('#rucProvider').val().trim(),
@@ -325,22 +325,22 @@
                     address: $('#addressProvider').val().trim()
                 };
 
-                const exists = DB.getProviders().some(p => p.ruc === newProv.ruc || p.name.toLowerCase() === newProv.name.toLowerCase());
+                const exists = await DB.getProviders().some(p => p.ruc === newProv.ruc || p.name.toLowerCase() === newProv.name.toLowerCase());
                 if (exists) {
                     swal('Error', 'Ya existe un proveedor con el mismo RUC o Razón Social.', 'error');
                     return;
                 }
 
-                DB.saveProvider(newProv);
+                await DB.saveProvider(newProv);
                 swal('¡Éxito!', 'El proveedor tecnológico ha sido registrado.', 'success');
                 this.reset();
-                renderTable();
+                await await renderTable();
                 $('#btn-list-tab').click();
             });
 
-            $(document).on('click', '.btn-delete-provider', function() {
+            $(document).on('click', '.btn-delete-provider', async function() {
                 const provId = $(this).data('id');
-                const hasAssets = DB.getAssets().some(a => a.providerId === provId.toString());
+                const hasAssets = await DB.getAssets().some(a => a.providerId === provId.toString());
 
                 if (hasAssets) {
                     swal('Acción denegada', 'No puedes eliminar este proveedor porque hay activos de TI asociados a él.', 'warning');
@@ -354,19 +354,19 @@
                     showCancelButton: true,
                     confirmButtonText: 'Sí, eliminar',
                     cancelButtonText: 'Cancelar'
-                }, function(isConfirm) {
+                }, async function(isConfirm) {
                     if (isConfirm) {
-                        let providers = DB.getProviders();
+                        let providers = await DB.getProviders();
                         providers = providers.filter(p => p.id !== provId.toString());
-                        DB.setData('it_providers', providers);
-                        renderTable();
+                        
+                        await await renderTable();
                         swal('Eliminado', 'El proveedor ha sido retirado del sistema.', 'success');
                     }
                 });
             });
 
             $('#btn-list-tab').on('click', function() {
-                renderTable();
+                await await renderTable();
             });
         });
     </script>

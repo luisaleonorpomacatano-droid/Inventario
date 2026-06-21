@@ -356,11 +356,11 @@
     </section>
 
     <script>
-        $(document).ready(function() {
+        $(document).ready(async function() {
             // Cargar datos en dropdowns
-            function loadDropdowns() {
-                const categories = DB.getCategories();
-                const providers = DB.getProviders();
+            async function loadDropdowns() {
+                const categories = await DB.getCategories();
+                const providers = await DB.getProviders();
 
                 const $typeAsset = $('#typeAsset');
                 $typeAsset.empty();
@@ -376,9 +376,9 @@
             }
 
             // Renderizar la tabla de activos
-            function renderTable(filterQuery = '', statusFilter = 'TODOS') {
-                const assets = DB.getAssets();
-                const employees = DB.getEmployees();
+            async function renderTable(filterQuery = '', statusFilter = 'TODOS') {
+                const assets = await DB.getAssets();
+                const employees = await DB.getEmployees();
                 const $tbody = $('#table-assets-body');
                 $tbody.empty();
 
@@ -440,11 +440,11 @@
             }
 
             // Inicializar página
-            loadDropdowns();
-            renderTable();
+            await loadDropdowns();
+            await renderTable();
 
             // Submit del formulario
-            $('#form-add-asset').on('submit', function(e) {
+            $('#form-add-asset').on('submit', async function(e) {
                 e.preventDefault();
                 const newAsset = {
                     code: $('#codeAsset').val(),
@@ -461,27 +461,29 @@
                 };
 
                 // Verificar duplicados de código
-                const exists = DB.getAssets().some(a => a.code.toLowerCase() === newAsset.code.toLowerCase());
+                const assets = await DB.getAssets();
+                const exists = assets.some(a => a.code.toLowerCase() === newAsset.code.toLowerCase());
                 if (exists) {
                     swal('Error', 'Ya existe un activo con ese Código Patrimonial.', 'error');
                     return;
                 }
 
-                DB.saveAsset(newAsset);
+                await DB.saveAsset(newAsset);
                 swal('¡Éxito!', 'El activo tecnológico ha sido registrado como Disponible.', 'success');
                 
                 // Limpiar formulario
                 this.reset();
-                renderTable();
+                await renderTable();
 
                 // Cambiar a la pestaña de listado
                 $('#btn-list-tab').click();
             });
 
             // Eliminar activo
-            $(document).on('click', '.btn-delete-asset', function() {
+            $(document).on('click', '.btn-delete-asset', async function() {
                 const assetId = $(this).data('id');
-                const asset = DB.getAssets().find(a => a.id === assetId.toString());
+                const assets = await DB.getAssets();
+                const asset = assets.find(a => a.id === assetId.toString());
 
                 if (asset && asset.status === 'Asignado') {
                     swal('Acción denegada', 'No puedes eliminar un activo que se encuentra Asignado. Devuélvelo primero.', 'warning');
@@ -495,30 +497,28 @@
                     showCancelButton: true,
                     confirmButtonText: 'Sí, eliminar',
                     cancelButtonText: 'Cancelar'
-                }, function(isConfirm) {
+                }, async function(isConfirm) {
                     if (isConfirm) {
-                        let assets = DB.getAssets();
-                        assets = assets.filter(a => a.id !== assetId.toString());
-                        DB.setData('it_assets', assets);
-                        renderTable($('#searchAsset').val(), $('#filterStatus').val());
+                        await DB.deleteAsset(assetId);
+                        await renderTable($('#searchAsset').val(), $('#filterStatus').val());
                         swal('Eliminado', 'El activo ha sido retirado del sistema.', 'success');
                     }
                 });
             });
 
             // Buscador
-            $('#searchAsset').on('keyup', function() {
-                renderTable($(this).val(), $('#filterStatus').val());
+            $('#searchAsset').on('keyup', async function() {
+                await renderTable($(this).val(), $('#filterStatus').val());
             });
 
             // Filtro por Estado
-            $('#filterStatus').on('change', function() {
-                renderTable($('#searchAsset').val(), $(this).val());
+            $('#filterStatus').on('change', async function() {
+                await renderTable($('#searchAsset').val(), $(this).val());
             });
 
             // Cargar de nuevo la tabla cuando se hace clic en la pestaña de listado
-            $('#btn-list-tab').on('click', function() {
-                renderTable();
+            $('#btn-list-tab').on('click', async function() {
+                await renderTable();
             });
         });
     </script>

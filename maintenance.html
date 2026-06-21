@@ -288,9 +288,9 @@
     </section>
 
     <script>
-        $(document).ready(function() {
-            function loadDropdowns() {
-                const assets = DB.getAssets();
+        $(document).ready(async function() {
+            async function loadDropdowns() {
+                const assets = await DB.getAssets();
                 const $selectAsset = $('#selectAssetMaint');
                 $selectAsset.empty();
 
@@ -306,9 +306,9 @@
                 }
             }
 
-            function renderTable() {
-                const maintenance = DB.getMaintenance();
-                const assets = DB.getAssets();
+            async function renderTable() {
+                const maintenance = await DB.getMaintenance();
+                const assets = await DB.getAssets();
                 const $tbody = $('#table-maint-body');
                 $tbody.empty();
 
@@ -355,11 +355,11 @@
             }
 
             // Inicializar vistas
-            loadDropdowns();
-            renderTable();
+            await loadDropdowns();
+            await await renderTable();
 
             // Submit del formulario
-            $('#form-add-maint').on('submit', function(e) {
+            $('#form-add-maint').on('submit', async function(e) {
                 e.preventDefault();
                 const assetId = $('#selectAssetMaint').val();
                 if(!assetId) {
@@ -377,18 +377,18 @@
                     statusFinal: 'En proceso'
                 };
 
-                DB.saveMaintenance(newMaint);
+                await DB.saveMaintenance(newMaint);
                 swal('¡Ingreso Registrado!', 'El activo ha sido puesto en estado "En mantenimiento".', 'success');
                 
                 this.reset();
-                loadDropdowns();
-                renderTable();
+                await loadDropdowns();
+                await await renderTable();
 
                 $('#btn-list-tab').click();
             });
 
             // Finalizar mantenimiento (Modal popup interactivo con SweetAlert2)
-            $(document).on('click', '.btn-finalize-maint', function() {
+            $(document).on('click', '.btn-finalize-maint', async function() {
                 const maintId = $(this).data('id').toString();
                 const assetId = $(this).data('assetid').toString();
 
@@ -399,7 +399,7 @@
                     showCancelButton: true,
                     closeOnConfirm: false,
                     inputPlaceholder: 'Solución aplicada...'
-                }, function(inputValue) {
+                }, async function(inputValue) {
                     if (inputValue === false) return false;
                     const solution = inputValue.trim() || 'Mantenimiento preventivo completado';
                     
@@ -412,24 +412,24 @@
                         confirmButtonText: 'Disponible (Operativo)',
                         cancelButtonText: 'Dado de baja (Dañado)',
                         closeOnConfirm: true
-                    }, function(isConfirm) {
+                    }, async function(isConfirm) {
                         const finalStatus = isConfirm ? 'Disponible' : 'Dado de baja';
                         const now = new Date();
                         const formattedDate = now.toISOString().slice(0, 10);
 
-                        DB.finalizeMaintenance(maintId, formattedDate, finalStatus, solution);
+                        await DB.finalizeMaintenance(maintId, formattedDate, finalStatus, solution);
                         
                         swal('¡Finalizado!', `Se completó la orden. El equipo ahora se encuentra: ${finalStatus}.`, 'success');
                         
-                        loadDropdowns();
-                        renderTable();
+                        await loadDropdowns();
+                        await await renderTable();
                     });
                 });
             });
 
             // Recargar vista al cambiar de pestaña
             $('#btn-list-tab').on('click', function() {
-                renderTable();
+                await await renderTable();
             });
         });
     </script>

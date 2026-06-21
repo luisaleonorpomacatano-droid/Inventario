@@ -283,9 +283,9 @@
     </section>
 
     <script>
-        $(document).ready(function() {
-            function loadDropdowns() {
-                const employees = DB.getEmployees();
+        $(document).ready(async function() {
+            async function loadDropdowns() {
+                const employees = await DB.getEmployees();
                 const $selectEmployee = $('#selectRequestEmployee');
                 $selectEmployee.empty();
                 employees.forEach(e => {
@@ -293,9 +293,9 @@
                 });
             }
 
-            function renderTable() {
-                const requests = DB.getRequests();
-                const employees = DB.getEmployees();
+            async function renderTable() {
+                const requests = await DB.getRequests();
+                const employees = await DB.getEmployees();
                 const $tbody = $('#table-requests-body');
                 $tbody.empty();
 
@@ -343,11 +343,11 @@
             }
 
             // Inicializar vistas
-            loadDropdowns();
-            renderTable();
+            await loadDropdowns();
+            await await renderTable();
 
             // Submit
-            $('#form-add-request').on('submit', function(e) {
+            $('#form-add-request').on('submit', async function(e) {
                 e.preventDefault();
                 const newReq = {
                     employeeId: $('#selectRequestEmployee').val(),
@@ -356,16 +356,16 @@
                     reason: $('#reasonRequest').val().trim()
                 };
 
-                DB.saveRequest(newReq);
+                await DB.saveRequest(newReq);
                 swal('¡Enviada!', 'La solicitud de equipo ha sido enviada al jefe/soporte técnico.', 'success');
                 this.reset();
-                renderTable();
+                await await renderTable();
 
                 $('#btn-list-tab').click();
             });
 
             // Aprobar Solicitud
-            $(document).on('click', '.btn-approve-request', function() {
+            $(document).on('click', '.btn-approve-request', async function() {
                 const reqId = $(this).data('id').toString();
                 
                 swal({
@@ -375,19 +375,19 @@
                     showCancelButton: true,
                     closeOnConfirm: false,
                     inputPlaceholder: 'Ej: Jefe de Sistemas TI'
-                }, function(inputValue) {
+                }, async function(inputValue) {
                     if (inputValue === false) return false;
                     const approver = inputValue.trim() || 'Responsable de TI';
 
-                    DB.updateRequestStatus(reqId, 'Aprobada', approver);
+                    await DB.updateRequestStatus(reqId, 'Aprobada', approver);
                     swal('¡Aprobada!', 'La solicitud ha sido aprobada. Ahora puedes ir a "Asignaciones" para entregar el equipo.', 'success');
                     
-                    renderTable();
+                    await await renderTable();
                 });
             });
 
             // Rechazar Solicitud
-            $(document).on('click', '.btn-reject-request', function() {
+            $(document).on('click', '.btn-reject-request', async function() {
                 const reqId = $(this).data('id').toString();
                 swal({
                     title: '¿Rechazar Solicitud?',
@@ -396,17 +396,17 @@
                     showCancelButton: true,
                     confirmButtonText: 'Sí, rechazar',
                     cancelButtonText: 'Cancelar'
-                }, function(isConfirm) {
+                }, async function(isConfirm) {
                     if (isConfirm) {
-                        DB.updateRequestStatus(reqId, 'Rechazada', 'Denegado por Soporte TI');
+                        await DB.updateRequestStatus(reqId, 'Rechazada', 'Denegado por Soporte TI');
                         swal('Rechazada', 'La solicitud de equipo ha sido rechazada.', 'success');
-                        renderTable();
+                        await await renderTable();
                     }
                 });
             });
 
             $('#btn-list-tab').on('click', function() {
-                renderTable();
+                await await renderTable();
             });
         });
     </script>
