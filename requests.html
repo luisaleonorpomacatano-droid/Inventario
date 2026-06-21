@@ -344,7 +344,7 @@
 
             // Inicializar vistas
             await loadDropdowns();
-            await await renderTable();
+            await renderTable();
 
             // Submit
             $('#form-add-request').on('submit', async function(e) {
@@ -359,7 +359,7 @@
                 await DB.saveRequest(newReq);
                 swal('¡Enviada!', 'La solicitud de equipo ha sido enviada al jefe/soporte técnico.', 'success');
                 this.reset();
-                await await renderTable();
+                await renderTable();
 
                 $('#btn-list-tab').click();
             });
@@ -382,7 +382,7 @@
                     await DB.updateRequestStatus(reqId, 'Aprobada', approver);
                     swal('¡Aprobada!', 'La solicitud ha sido aprobada. Ahora puedes ir a "Asignaciones" para entregar el equipo.', 'success');
                     
-                    await await renderTable();
+                    await renderTable();
                 });
             });
 
@@ -400,13 +400,13 @@
                     if (isConfirm) {
                         await DB.updateRequestStatus(reqId, 'Rechazada', 'Denegado por Soporte TI');
                         swal('Rechazada', 'La solicitud de equipo ha sido rechazada.', 'success');
-                        await await renderTable();
+                        await renderTable();
                     }
                 });
             });
 
-            $('#btn-list-tab').on('click', function() {
-                await await renderTable();
+            $('#btn-list-tab').on('click', async function() {
+                await renderTable();
             });
         });
     </script>

@@ -339,7 +339,7 @@
                 });
             }
 
-            await await renderTable();
+            await renderTable();
 
             $('#form-add-employee').on('submit', async function(e) {
                 e.preventDefault();
@@ -353,7 +353,7 @@
                     location: $('#locationEmployee').val()
                 };
 
-                const exists = await DB.getEmployees().some(emp => emp.dni === newEmp.dni || emp.email.toLowerCase() === newEmp.email.toLowerCase());
+                const exists = (await DB.getEmployees()).some(emp => emp.dni === newEmp.dni || emp.email.toLowerCase() === newEmp.email.toLowerCase());
                 if (exists) {
                     swal('Error', 'Ya existe un colaborador con el mismo DNI o Correo Corporativo.', 'error');
                     return;
@@ -362,13 +362,13 @@
                 await DB.saveEmployee(newEmp);
                 swal('¡Éxito!', 'El colaborador ha sido registrado.', 'success');
                 this.reset();
-                await await renderTable();
+                await renderTable();
                 $('#btn-list-tab').click();
             });
 
             $(document).on('click', '.btn-delete-employee', async function() {
                 const empId = $(this).data('id');
-                const hasAssigned = await DB.getAssets().some(a => a.employeeId === empId.toString());
+                const hasAssigned = (await DB.getAssets()).some(a => a.employeeId === empId.toString());
 
                 if (hasAssigned) {
                     swal('Acción denegada', 'No puedes eliminar un colaborador que tiene activos de TI asignados.', 'warning');
@@ -384,17 +384,15 @@
                     cancelButtonText: 'Cancelar'
                 }, async function(isConfirm) {
                     if (isConfirm) {
-                        let employees = await DB.getEmployees();
-                        employees = employees.filter(emp => emp.id !== empId.toString());
-                        
-                        await await renderTable();
+                        await DB.deleteEmployee(empId);
+                        await renderTable();
                         swal('Eliminado', 'El colaborador ha sido retirado del sistema.', 'success');
                     }
                 });
             });
 
-            $('#btn-list-tab').on('click', function() {
-                await await renderTable();
+            $('#btn-list-tab').on('click', async function() {
+                await renderTable();
             });
         });
     </script>

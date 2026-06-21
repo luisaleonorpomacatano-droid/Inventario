@@ -356,7 +356,7 @@
 
             // Inicializar vistas
             await loadDropdowns();
-            await await renderTable();
+            await renderTable();
 
             // Submit del formulario
             $('#form-add-maint').on('submit', async function(e) {
@@ -382,7 +382,7 @@
                 
                 this.reset();
                 await loadDropdowns();
-                await await renderTable();
+                await renderTable();
 
                 $('#btn-list-tab').click();
             });
@@ -422,14 +422,14 @@
                         swal('¡Finalizado!', `Se completó la orden. El equipo ahora se encuentra: ${finalStatus}.`, 'success');
                         
                         await loadDropdowns();
-                        await await renderTable();
+                        await renderTable();
                     });
                 });
             });
 
             // Recargar vista al cambiar de pestaña
-            $('#btn-list-tab').on('click', function() {
-                await await renderTable();
+            $('#btn-list-tab').on('click', async function() {
+                await renderTable();
             });
         });
     </script>

@@ -313,7 +313,7 @@
                 });
             }
 
-            await await renderTable();
+            await renderTable();
 
             $('#form-add-provider').on('submit', async function(e) {
                 e.preventDefault();
@@ -325,7 +325,7 @@
                     address: $('#addressProvider').val().trim()
                 };
 
-                const exists = await DB.getProviders().some(p => p.ruc === newProv.ruc || p.name.toLowerCase() === newProv.name.toLowerCase());
+                const exists = (await DB.getProviders()).some(p => p.ruc === newProv.ruc || p.name.toLowerCase() === newProv.name.toLowerCase());
                 if (exists) {
                     swal('Error', 'Ya existe un proveedor con el mismo RUC o Razón Social.', 'error');
                     return;
@@ -334,13 +334,13 @@
                 await DB.saveProvider(newProv);
                 swal('¡Éxito!', 'El proveedor tecnológico ha sido registrado.', 'success');
                 this.reset();
-                await await renderTable();
+                await renderTable();
                 $('#btn-list-tab').click();
             });
 
             $(document).on('click', '.btn-delete-provider', async function() {
                 const provId = $(this).data('id');
-                const hasAssets = await DB.getAssets().some(a => a.providerId === provId.toString());
+                const hasAssets = (await DB.getAssets()).some(a => a.providerId === provId.toString());
 
                 if (hasAssets) {
                     swal('Acción denegada', 'No puedes eliminar este proveedor porque hay activos de TI asociados a él.', 'warning');
@@ -356,17 +356,15 @@
                     cancelButtonText: 'Cancelar'
                 }, async function(isConfirm) {
                     if (isConfirm) {
-                        let providers = await DB.getProviders();
-                        providers = providers.filter(p => p.id !== provId.toString());
-                        
-                        await await renderTable();
+                        await DB.deleteProvider(provId);
+                        await renderTable();
                         swal('Eliminado', 'El proveedor ha sido retirado del sistema.', 'success');
                     }
                 });
             });
 
-            $('#btn-list-tab').on('click', function() {
-                await await renderTable();
+            $('#btn-list-tab').on('click', async function() {
+                await renderTable();
             });
         });
     </script>

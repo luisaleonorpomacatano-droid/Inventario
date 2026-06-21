@@ -26,7 +26,8 @@ CREATE TABLE IF NOT EXISTS usuarios (
     contrasena VARCHAR(255), -- Para inicio de sesión
     id_rol INT REFERENCES roles(id) ON DELETE SET NULL,
     id_area INT REFERENCES areas(id) ON DELETE SET NULL,
-    estado VARCHAR(50) DEFAULT 'Activo' -- Activo / Inactivo
+    estado VARCHAR(50) DEFAULT 'Activo', -- Activo / Inactivo
+    ubicacion VARCHAR(150) -- Sede o ubicación del colaborador
 );
 
 -- 4. Tabla de Proveedores

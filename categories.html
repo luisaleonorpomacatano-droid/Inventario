@@ -286,7 +286,7 @@
                 });
             }
 
-            await await renderTable();
+            await renderTable();
 
             $('#form-add-category').on('submit', async function(e) {
                 e.preventDefault();
@@ -295,7 +295,7 @@
                     name: $('#nameCategory').val().trim()
                 };
 
-                const exists = await DB.getCategories().some(c => c.code.toLowerCase() === newCat.code.toLowerCase() || c.name.toLowerCase() === newCat.name.toLowerCase());
+                const exists = (await DB.getCategories()).some(c => c.code.toLowerCase() === newCat.code.toLowerCase() || c.name.toLowerCase() === newCat.name.toLowerCase());
                 if (exists) {
                     swal('Error', 'Ya existe una categoría con ese código o nombre.', 'error');
                     return;
@@ -304,7 +304,7 @@
                 await DB.saveCategory(newCat);
                 swal('¡Registrado!', 'Categoría guardada exitosamente.', 'success');
                 this.reset();
-                await await renderTable();
+                await renderTable();
                 $('#btn-list-tab').click();
             });
 
@@ -319,17 +319,15 @@
                     cancelButtonText: 'Cancelar'
                 }, async function(isConfirm) {
                     if (isConfirm) {
-                        let categories = await DB.getCategories();
-                        categories = categories.filter(c => c.id !== catId.toString());
-                        
-                        await await renderTable();
+                        await DB.deleteCategory(catId);
+                        await renderTable();
                         swal('Eliminada', 'La categoría ha sido eliminada.', 'success');
                     }
                 });
             });
 
-            $('#btn-list-tab').on('click', function() {
-                await await renderTable();
+            $('#btn-list-tab').on('click', async function() {
+                await renderTable();
             });
         });
     </script>

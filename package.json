@@ -1,0 +1,12 @@
+{
+  "name": "scta-inventario",
+  "version": "2.0.0",
+  "description": "Sistema de Control de Activos Tecnológicos - IT Asset Management",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve -l 8000"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

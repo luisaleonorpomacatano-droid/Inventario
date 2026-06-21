@@ -335,7 +335,7 @@
                 });
             }
 
-            await await renderTable();
+            await renderTable();
 
             $('#form-add-admin').on('submit', async function(e) {
                 e.preventDefault();
@@ -360,7 +360,7 @@
                 localStorage.setItem('it_admins', JSON.stringify(admins));
                 swal('¡Éxito!', 'El nuevo usuario de soporte técnico ha sido registrado.', 'success');
                 this.reset();
-                await await renderTable();
+                await renderTable();
                 $('#btn-list-tab').click();
             });
 
@@ -383,14 +383,14 @@
                     if (isConfirm) {
                         const filtered = admins.filter(a => a.id !== id);
                         localStorage.setItem('it_admins', JSON.stringify(filtered));
-                        await await renderTable();
+                        await renderTable();
                         swal('Eliminado', 'La cuenta ha sido eliminada.', 'success');
                     }
                 });
             });
 
-            $('#btn-list-tab').on('click', function() {
-                await await renderTable();
+            $('#btn-list-tab').on('click', async function() {
+                await renderTable();
             });
         });
     </script>
