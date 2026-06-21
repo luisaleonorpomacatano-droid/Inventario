@@ -1,0 +1,308 @@
+<!-- 
+* SCTA - Sistema de Control de Activos Tecnológicos
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard | SCTA</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/sweetalert2.css">
+    <link rel="stylesheet" href="css/material.min.css">
+    <link rel="stylesheet" href="css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/material.min.js" ></script>
+    <script src="js/sweetalert2.min.js" ></script>
+    <script src="js/jquery.mCustomScrollbar.concat.min.js" ></script>
+    <script src="js/db.js" ></script>
+    <script src="js/main.js" ></script>
+</head>
+<body>
+    <!-- Notifications area -->
+    <section class="full-width container-notifications">
+        <div class="full-width container-notifications-bg btn-Notification"></div>
+        <section class="NotificationArea">
+            <div class="full-width NotificationArea-title">Notificaciones <i class="zmdi zmdi-close btn-Notification"></i></div>
+            <a href="#" class="Notification" id="notifation-1">
+                <div class="Notification-icon"><i class="zmdi zmdi-alert-triangle" style="color: var(--accent-amber);"></i></div>
+                <div class="Notification-text">
+                    <p><strong>Garantías por vencer</strong><br>Hay 2 equipos cuya garantía expira este mes.</p>
+                    <small>Hace 5 minutos</small>
+                </div>
+            </a>
+            <a href="#" class="Notification" id="notifation-2">
+                <div class="Notification-icon"><i class="zmdi zmdi-wrench" style="color: var(--accent-cyan);"></i></div>
+                <div class="Notification-text">
+                    <p><strong>Mantenimiento pendiente</strong><br>Laptop LAP-001 requiere revisión técnica.</p>
+                    <small>Hace 20 minutos</small>
+                </div>
+            </a>
+        </section>
+    </section>
+
+    <!-- navLateral (Sidebar) -->
+    <section class="full-width navLateral">
+        <div class="full-width navLateral-bg btn-menu"></div>
+        <div class="full-width navLateral-body">
+            <div class="full-width navLateral-body-logo tittles">
+                <i class="zmdi zmdi-close btn-menu"></i> SCTA TI
+            </div>
+            <figure class="full-width navLateral-body-tittle-menu">
+                <div>
+                    <img src="assets/img/avatar-male.png" alt="Avatar" class="img-responsive">
+                </div>
+                <figcaption>
+                    <span>Soporte TI Admin</span>
+                    <small>Administrador</small>
+                </figcaption>
+            </figure>
+            <nav class="full-width">
+                <ul class="full-width list-unstyle menu-principal">
+                    <li class="full-width">
+                        <a href="home.html" class="full-width active-link">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-view-dashboard"></i></div>
+                            <div class="navLateral-body-cr">DASHBOARD</div>
+                        </a>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="#!" class="full-width btn-subMenu">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-case"></i></div>
+                            <div class="navLateral-body-cr">ADMINISTRACIÓN</div>
+                            <span class="zmdi zmdi-chevron-left"></span>
+                        </a>
+                        <ul class="full-width menu-principal sub-menu-options">
+                            <li class="full-width">
+                                <a href="providers.html" class="full-width">
+                                    <div class="navLateral-body-cl"><i class="zmdi zmdi-truck"></i></div>
+                                    <div class="navLateral-body-cr">PROVEEDORES</div>
+                                </a>
+                            </li>
+                            <li class="full-width">
+                                <a href="categories.html" class="full-width">
+                                    <div class="navLateral-body-cl"><i class="zmdi zmdi-label"></i></div>
+                                    <div class="navLateral-body-cr">CATEGORÍAS</div>
+                                </a>
+                            </li>
+                            <li class="full-width">
+                                <a href="warranties.html" class="full-width">
+                                    <div class="navLateral-body-cl"><i class="zmdi zmdi-shield-security"></i></div>
+                                    <div class="navLateral-body-cr">GARANTÍAS</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="#!" class="full-width btn-subMenu">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-accounts"></i></div>
+                            <div class="navLateral-body-cr">USUARIOS TI</div>
+                            <span class="zmdi zmdi-chevron-left"></span>
+                        </a>
+                        <ul class="full-width menu-principal sub-menu-options">
+                            <li class="full-width">
+                                <a href="admin.html" class="full-width">
+                                    <div class="navLateral-body-cl"><i class="zmdi zmdi-account"></i></div>
+                                    <div class="navLateral-body-cr">SOPORTE TI</div>
+                                </a>
+                            </li>
+                            <li class="full-width">
+                                <a href="employees.html" class="full-width">
+                                    <div class="navLateral-body-cl"><i class="zmdi zmdi-accounts-list"></i></div>
+                                    <div class="navLateral-body-cr">COLABORADORES</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="assets.html" class="full-width">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-laptop-mac"></i></div>
+                            <div class="navLateral-body-cr">ACTIVOS TECNOLÓGICOS</div>
+                        </a>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="assignments.html" class="full-width">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-assignment-returned"></i></div>
+                            <div class="navLateral-body-cr">ASIGNACIONES</div>
+                        </a>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="requests.html" class="full-width">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-comment-list"></i></div>
+                            <div class="navLateral-body-cr">SOLICITUDES</div>
+                        </a>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="maintenance.html" class="full-width">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-wrench"></i></div>
+                            <div class="navLateral-body-cr">MANTENIMIENTO</div>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <!-- pageContent -->
+    <section class="full-width pageContent">
+        <!-- navBar -->
+        <div class="full-width navBar">
+            <div class="full-width navBar-options">
+                <i class="zmdi zmdi-swap btn-menu" id="btn-menu"></i>
+                <div class="mdl-tooltip" for="btn-menu">Ocultar / Mostrar Menú</div>
+                <nav class="navBar-options-list">
+                    <ul class="list-unstyle">
+                        <li class="btn-Notification" id="notifications">
+                            <i class="zmdi zmdi-notifications"></i>
+                            <div class="mdl-tooltip" for="notifications">Notificaciones</div>
+                        </li>
+                        <li class="btn-exit" id="btn-exit">
+                            <i class="zmdi zmdi-power"></i>
+                            <div class="mdl-tooltip" for="btn-exit">Cerrar Sesión</div>
+                        </li>
+                        <li class="text-condensedLight noLink"><small>Soporte TI</small></li>
+                        <li class="noLink">
+                            <figure>
+                                <img src="assets/img/avatar-male.png" alt="Avatar">
+                            </figure>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Indicadores / Mosaicos -->
+        <h3 class="text-center tittles" style="color: var(--accent-cyan); margin: 30px 0 10px 0;">DASHBOARD DE ACTIVOS TI</h3>
+        <p class="text-center text-secondary" style="margin-bottom: 20px;">Resumen en tiempo real del inventario y control tecnológico.</p>
+
+        <section class="tile-container">
+            <article class="tile tile-cyan" onclick="location.href='assets.html'">
+                <div class="tile-text">
+                    <span id="stat-total">0</span>
+                    <small>Total Activos</small>
+                </div>
+                <i class="zmdi zmdi-laptop-mac tile-icon"></i>
+            </article>
+            <article class="tile tile-blue" onclick="location.href='assignments.html'">
+                <div class="tile-text">
+                    <span id="stat-assigned">0</span>
+                    <small>Asignados</small>
+                </div>
+                <i class="zmdi zmdi-assignment-account tile-icon"></i>
+            </article>
+            <article class="tile tile-emerald" onclick="location.href='assets.html'">
+                <div class="tile-text">
+                    <span id="stat-available">0</span>
+                    <small>Disponibles</small>
+                </div>
+                <i class="zmdi zmdi-check-circle tile-icon"></i>
+            </article>
+            <article class="tile tile-amber" onclick="location.href='maintenance.html'">
+                <div class="tile-text">
+                    <span id="stat-maintenance">0</span>
+                    <small>En Soporte</small>
+                </div>
+                <i class="zmdi zmdi-wrench tile-icon"></i>
+            </article>
+            <article class="tile tile-crimson" onclick="location.href='warranties.html'">
+                <div class="tile-text">
+                    <span id="stat-warranties">0</span>
+                    <small>Garantías Críticas</small>
+                </div>
+                <i class="zmdi zmdi-shield-security tile-icon"></i>
+            </article>
+            <article class="tile tile-cyan" onclick="location.href='requests.html'">
+                <div class="tile-text">
+                    <span id="stat-requests">0</span>
+                    <small>Solicitudes Pend.</small>
+                </div>
+                <i class="zmdi zmdi-comment-list tile-icon"></i>
+            </article>
+        </section>
+
+        <!-- Historial / Timeline -->
+        <section class="full-width" style="margin: 40px 0; overflow-y: auto; flex: 1;">
+            <h3 class="text-center tittles" style="color: var(--accent-cyan); margin-bottom: 5px;">HISTORIAL DE MOVIMIENTOS TI</h3>
+            <p class="text-center text-secondary" style="margin-bottom: 20px;">Trazabilidad y auditoría de eventos de activos tecnológicos.</p>
+            
+            <div id="timeline-c" class="timeline-c">
+                <!-- Se poblará dinámicamente con JS -->
+            </div>
+        </section>
+    </section>
+
+    <script>
+        $(document).ready(function() {
+            const stats = DB.getStats();
+            $('#stat-total').text(stats.total);
+            $('#stat-assigned').text(stats.assigned);
+            $('#stat-available').text(stats.available);
+            $('#stat-maintenance').text(stats.maintenance);
+            $('#stat-warranties').text(stats.warrantiesExpired + stats.warrantiesToExpire);
+            $('#stat-requests').text(stats.pendingRequests);
+
+            const assets = DB.getAssets();
+            const employees = DB.getEmployees();
+            const assignments = DB.getAssignments();
+            const maintenance = DB.getMaintenance();
+            
+            let logs = [];
+            
+            assignments.forEach(asg => {
+                const asset = assets.find(a => a.id === asg.assetId);
+                const emp = employees.find(e => e.id === asg.employeeId);
+                logs.push({
+                    title: 'Asignación de Activo',
+                    desc: `El equipo <strong>${asset ? asset.brand + ' ' + asset.model : 'Equipo'} (${asset ? asset.code : 'Desconocido'})</strong> fue asignado a <strong>${emp ? emp.name + ' ' + emp.lastname : 'Colaborador'}</strong> (Área: ${asset ? asset.area : 'N/A'}).`,
+                    date: asg.date,
+                    icon: 'zmdi-assignment-account',
+                    color: 'var(--accent-blue)'
+                });
+            });
+
+            maintenance.forEach(m => {
+                const asset = assets.find(a => a.id === m.assetId);
+                logs.push({
+                    title: `Mantenimiento ${m.type}`,
+                    desc: `El equipo <strong>${asset ? asset.brand + ' ' + asset.model : 'Equipo'} (${asset ? asset.code : 'Desconocido'})</strong> ingresó a soporte. Detalle: ${m.description}. Técnico responsable: ${m.technician}.`,
+                    date: m.startDate,
+                    icon: 'zmdi-wrench',
+                    color: m.statusFinal === 'Completado' ? 'var(--accent-emerald)' : 'var(--accent-amber)'
+                });
+            });
+            
+            logs.sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            const $timeline = $('#timeline-c');
+            $timeline.empty();
+            if (logs.length === 0) {
+                $timeline.html('<p class="text-center text-secondary">No hay movimientos recientes registrados.</p>');
+            } else {
+                logs.forEach(log => {
+                    $timeline.append(`
+                        <div class="timeline-c-box">
+                            <div class="timeline-c-box-icon" style="--accent-color: ${log.color}">
+                                <i class="zmdi ${log.icon}"></i>
+                            </div>
+                            <div class="timeline-c-box-content">
+                                <h4>${log.title}</h4>
+                                <p>${log.desc}</p>
+                                <span class="timeline-date" style="--accent-color: ${log.color}">
+                                    <i class="zmdi zmdi-calendar-note"></i> ${log.date}
+                                </span>
+                            </div>
+                        </div>
+                    `);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

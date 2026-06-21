@@ -1,0 +1,289 @@
+<!-- 
+* SCTA - Sistema de Control de Activos Tecnológicos
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Garantías de Activos | SCTA</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/sweetalert2.css">
+    <link rel="stylesheet" href="css/material.min.css">
+    <link rel="stylesheet" href="css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/material.min.js" ></script>
+    <script src="js/sweetalert2.min.js" ></script>
+    <script src="js/jquery.mCustomScrollbar.concat.min.js" ></script>
+    <script src="js/db.js" ></script>
+    <script src="js/main.js" ></script>
+</head>
+<body>
+    <!-- Notifications area -->
+    <section class="full-width container-notifications">
+        <div class="full-width container-notifications-bg btn-Notification"></div>
+        <section class="NotificationArea">
+            <div class="full-width NotificationArea-title">Notificaciones <i class="zmdi zmdi-close btn-Notification"></i></div>
+            <a href="#" class="Notification" id="notifation-1">
+                <div class="Notification-icon"><i class="zmdi zmdi-alert-triangle" style="color: var(--accent-amber);"></i></div>
+                <div class="Notification-text">
+                    <p><strong>Garantías por vencer</strong><br>Hay 2 equipos cuya garantía expira este mes.</p>
+                    <small>Hace 5 minutos</small>
+                </div>
+            </a>
+        </section>
+    </section>
+
+    <!-- navLateral -->
+    <section class="full-width navLateral">
+        <div class="full-width navLateral-bg btn-menu"></div>
+        <div class="full-width navLateral-body">
+            <div class="full-width navLateral-body-logo tittles">
+                <i class="zmdi zmdi-close btn-menu"></i> SCTA TI
+            </div>
+            <figure class="full-width navLateral-body-tittle-menu">
+                <div>
+                    <img src="assets/img/avatar-male.png" alt="Avatar" class="img-responsive">
+                </div>
+                <figcaption>
+                    <span>Soporte TI Admin</span>
+                    <small>Administrador</small>
+                </figcaption>
+            </figure>
+            <nav class="full-width">
+                <ul class="full-width list-unstyle menu-principal">
+                    <li class="full-width">
+                        <a href="home.html" class="full-width">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-view-dashboard"></i></div>
+                            <div class="navLateral-body-cr">DASHBOARD</div>
+                        </a>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="#!" class="full-width btn-subMenu">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-case"></i></div>
+                            <div class="navLateral-body-cr">ADMINISTRACIÓN</div>
+                            <span class="zmdi zmdi-chevron-left"></span>
+                        </a>
+                        <ul class="full-width menu-principal sub-menu-options">
+                            <li class="full-width">
+                                <a href="providers.html" class="full-width">
+                                    <div class="navLateral-body-cl"><i class="zmdi zmdi-truck"></i></div>
+                                    <div class="navLateral-body-cr">PROVEEDORES</div>
+                                </a>
+                            </li>
+                            <li class="full-width">
+                                <a href="categories.html" class="full-width">
+                                    <div class="navLateral-body-cl"><i class="zmdi zmdi-label"></i></div>
+                                    <div class="navLateral-body-cr">CATEGORÍAS</div>
+                                </a>
+                            </li>
+                            <li class="full-width">
+                                <a href="warranties.html" class="full-width active-link">
+                                    <div class="navLateral-body-cl"><i class="zmdi zmdi-shield-security"></i></div>
+                                    <div class="navLateral-body-cr">GARANTÍAS</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="#!" class="full-width btn-subMenu">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-accounts"></i></div>
+                            <div class="navLateral-body-cr">USUARIOS TI</div>
+                            <span class="zmdi zmdi-chevron-left"></span>
+                        </a>
+                        <ul class="full-width menu-principal sub-menu-options">
+                            <li class="full-width">
+                                <a href="admin.html" class="full-width">
+                                    <div class="navLateral-body-cl"><i class="zmdi zmdi-account"></i></div>
+                                    <div class="navLateral-body-cr">SOPORTE TI</div>
+                                </a>
+                            </li>
+                            <li class="full-width">
+                                <a href="employees.html" class="full-width">
+                                    <div class="navLateral-body-cl"><i class="zmdi zmdi-accounts-list"></i></div>
+                                    <div class="navLateral-body-cr">COLABORADORES</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="assets.html" class="full-width">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-laptop-mac"></i></div>
+                            <div class="navLateral-body-cr">ACTIVOS TECNOLÓGICOS</div>
+                        </a>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="assignments.html" class="full-width">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-assignment-returned"></i></div>
+                            <div class="navLateral-body-cr">ASIGNACIONES</div>
+                        </a>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="requests.html" class="full-width">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-comment-list"></i></div>
+                            <div class="navLateral-body-cr">SOLICITUDES</div>
+                        </a>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="maintenance.html" class="full-width">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-wrench"></i></div>
+                            <div class="navLateral-body-cr">MANTENIMIENTO</div>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <!-- pageContent -->
+    <section class="full-width pageContent">
+        <!-- navBar -->
+        <div class="full-width navBar">
+            <div class="full-width navBar-options">
+                <i class="zmdi zmdi-swap btn-menu" id="btn-menu"></i>
+                <div class="mdl-tooltip" for="btn-menu">Ocultar / Mostrar Menú</div>
+                <nav class="navBar-options-list">
+                    <ul class="list-unstyle">
+                        <li class="btn-Notification" id="notifications">
+                            <i class="zmdi zmdi-notifications"></i>
+                            <div class="mdl-tooltip" for="notifications">Notificaciones</div>
+                        </li>
+                        <li class="btn-exit" id="btn-exit">
+                            <i class="zmdi zmdi-power"></i>
+                            <div class="mdl-tooltip" for="btn-exit">Cerrar Sesión</div>
+                        </li>
+                        <li class="text-condensedLight noLink"><small>Soporte TI</small></li>
+                        <li class="noLink">
+                            <figure>
+                                <img src="assets/img/avatar-male.png" alt="Avatar">
+                            </figure>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <section class="full-width header-well">
+            <div class="full-width header-well-icon">
+                <i class="zmdi zmdi-shield-security"></i>
+            </div>
+            <div class="full-width header-well-text">
+                <p class="text-condensedLight">
+                    <strong>Control de Garantías TI:</strong> Supervisa el estado de cobertura de garantía de todos los equipos del inventario. El sistema calcula dinámicamente el vencimiento y emite alertas para equipos cuya garantía está vencida o por expirar en los próximos 60 días.
+                </p>
+            </div>
+        </section>
+
+        <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--12-col">
+                <div class="full-width panel">
+                    <div class="full-width panel-tittle text-center">
+                        Seguimiento de Garantías de Hardware
+                    </div>
+                    <div class="full-width panel-content">
+                        <div class="table-responsive">
+                            <table class="mdl-data-table mdl-js-data-table full-width">
+                                <thead>
+                                    <tr>
+                                        <th class="mdl-data-table__cell--non-numeric">Código Activo</th>
+                                        <th class="mdl-data-table__cell--non-numeric">Equipo</th>
+                                        <th class="mdl-data-table__cell--non-numeric">Proveedor</th>
+                                        <th class="mdl-data-table__cell--non-numeric">Fecha Compra</th>
+                                        <th class="mdl-data-table__cell--non-numeric">Duración</th>
+                                        <th class="mdl-data-table__cell--non-numeric">Vencimiento</th>
+                                        <th class="mdl-data-table__cell--non-numeric">Estado Garantía</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="table-warranties-body">
+                                    <!-- Poblar dinámicamente -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        $(document).ready(function() {
+            function renderWarranties() {
+                const assets = DB.getAssets();
+                const providers = DB.getProviders();
+                const $tbody = $('#table-warranties-body');
+                $tbody.empty();
+
+                if (assets.length === 0) {
+                    $tbody.append('<tr><td colspan="7" class="text-center text-secondary">No hay activos registrados para calcular garantías.</td></tr>');
+                    return;
+                }
+
+                const now = new Date();
+
+                assets.forEach(a => {
+                    const prov = providers.find(p => p.id === a.providerId);
+                    const provName = prov ? prov.name : 'Desconocido';
+
+                    let formattedExp = 'N/A';
+                    let badgeClass = 'badge-retired';
+                    let statusText = 'Sin registro';
+
+                    if (a.purchaseDate) {
+                        const purchaseDateObj = new Date(a.purchaseDate);
+                        const warrantyMonths = parseInt(a.warrantyMonths) || 0;
+                        
+                        // Calcular fecha vencimiento
+                        const expiryDate = new Date(purchaseDateObj);
+                        expiryDate.setMonth(expiryDate.getMonth() + warrantyMonths);
+                        
+                        // Formato fecha vencimiento (yyyy-mm-dd)
+                        const year = expiryDate.getFullYear();
+                        const month = String(expiryDate.getMonth() + 1).padStart(2, '0');
+                        const day = String(expiryDate.getDate()).padStart(2, '0');
+                        formattedExp = `${year}-${month}-${day}`;
+
+                        // Calcular días restantes
+                        const diffTime = expiryDate - now;
+                        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+                        if (diffDays < 0) {
+                            badgeClass = 'badge-retired';
+                            statusText = 'Vencida';
+                        } else if (diffDays <= 60) {
+                            badgeClass = 'badge-maintenance';
+                            statusText = 'Por Vencer';
+                        } else {
+                            badgeClass = 'badge-available';
+                            statusText = 'Vigente';
+                        }
+                    }
+
+                    $tbody.append(`
+                        <tr>
+                            <td class="mdl-data-table__cell--non-numeric"><strong>${a.code}</strong></td>
+                            <td class="mdl-data-table__cell--non-numeric">${a.type} ${a.brand} ${a.model}</td>
+                            <td class="mdl-data-table__cell--non-numeric">${provName}</td>
+                            <td class="mdl-data-table__cell--non-numeric">${a.purchaseDate || 'N/A'}</td>
+                            <td class="mdl-data-table__cell--non-numeric">${a.warrantyMonths} meses</td>
+                            <td class="mdl-data-table__cell--non-numeric"><code>${formattedExp}</code></td>
+                            <td class="mdl-data-table__cell--non-numeric">
+                                <span class="badge ${badgeClass}">${statusText}</span>
+                            </td>
+                        </tr>
+                    `);
+                });
+            }
+
+            renderWarranties();
+        });
+    </script>
+</body>
+</html>

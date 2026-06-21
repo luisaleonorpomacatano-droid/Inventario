@@ -1,0 +1,398 @@
+<!-- 
+* SCTA - Sistema de Control de Activos Tecnológicos
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Soporte TI | SCTA</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/sweetalert2.css">
+    <link rel="stylesheet" href="css/material.min.css">
+    <link rel="stylesheet" href="css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/material.min.js" ></script>
+    <script src="js/sweetalert2.min.js" ></script>
+    <script src="js/jquery.mCustomScrollbar.concat.min.js" ></script>
+    <script src="js/db.js" ></script>
+    <script src="js/main.js" ></script>
+</head>
+<body>
+    <!-- Notifications area -->
+    <section class="full-width container-notifications">
+        <div class="full-width container-notifications-bg btn-Notification"></div>
+        <section class="NotificationArea">
+            <div class="full-width NotificationArea-title">Notificaciones <i class="zmdi zmdi-close btn-Notification"></i></div>
+            <a href="#" class="Notification" id="notifation-1">
+                <div class="Notification-icon"><i class="zmdi zmdi-alert-triangle" style="color: var(--accent-amber);"></i></div>
+                <div class="Notification-text">
+                    <p><strong>Garantías por vencer</strong><br>Hay 2 equipos cuya garantía expira este mes.</p>
+                    <small>Hace 5 minutos</small>
+                </div>
+            </a>
+        </section>
+    </section>
+
+    <!-- navLateral -->
+    <section class="full-width navLateral">
+        <div class="full-width navLateral-bg btn-menu"></div>
+        <div class="full-width navLateral-body">
+            <div class="full-width navLateral-body-logo tittles">
+                <i class="zmdi zmdi-close btn-menu"></i> SCTA TI
+            </div>
+            <figure class="full-width navLateral-body-tittle-menu">
+                <div>
+                    <img src="assets/img/avatar-male.png" alt="Avatar" class="img-responsive">
+                </div>
+                <figcaption>
+                    <span>Soporte TI Admin</span>
+                    <small>Administrador</small>
+                </figcaption>
+            </figure>
+            <nav class="full-width">
+                <ul class="full-width list-unstyle menu-principal">
+                    <li class="full-width">
+                        <a href="home.html" class="full-width">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-view-dashboard"></i></div>
+                            <div class="navLateral-body-cr">DASHBOARD</div>
+                        </a>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="#!" class="full-width btn-subMenu">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-case"></i></div>
+                            <div class="navLateral-body-cr">ADMINISTRACIÓN</div>
+                            <span class="zmdi zmdi-chevron-left"></span>
+                        </a>
+                        <ul class="full-width menu-principal sub-menu-options">
+                            <li class="full-width">
+                                <a href="providers.html" class="full-width">
+                                    <div class="navLateral-body-cl"><i class="zmdi zmdi-truck"></i></div>
+                                    <div class="navLateral-body-cr">PROVEEDORES</div>
+                                </a>
+                            </li>
+                            <li class="full-width">
+                                <a href="categories.html" class="full-width">
+                                    <div class="navLateral-body-cl"><i class="zmdi zmdi-label"></i></div>
+                                    <div class="navLateral-body-cr">CATEGORÍAS</div>
+                                </a>
+                            </li>
+                            <li class="full-width">
+                                <a href="warranties.html" class="full-width">
+                                    <div class="navLateral-body-cl"><i class="zmdi zmdi-shield-security"></i></div>
+                                    <div class="navLateral-body-cr">GARANTÍAS</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="#!" class="full-width btn-subMenu">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-accounts"></i></div>
+                            <div class="navLateral-body-cr">USUARIOS TI</div>
+                            <span class="zmdi zmdi-chevron-left"></span>
+                        </a>
+                        <ul class="full-width menu-principal sub-menu-options">
+                            <li class="full-width">
+                                <a href="admin.html" class="full-width active-link">
+                                    <div class="navLateral-body-cl"><i class="zmdi zmdi-account"></i></div>
+                                    <div class="navLateral-body-cr">SOPORTE TI</div>
+                                </a>
+                            </li>
+                            <li class="full-width">
+                                <a href="employees.html" class="full-width">
+                                    <div class="navLateral-body-cl"><i class="zmdi zmdi-accounts-list"></i></div>
+                                    <div class="navLateral-body-cr">COLABORADORES</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="assets.html" class="full-width">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-laptop-mac"></i></div>
+                            <div class="navLateral-body-cr">ACTIVOS TECNOLÓGICOS</div>
+                        </a>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="assignments.html" class="full-width">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-assignment-returned"></i></div>
+                            <div class="navLateral-body-cr">ASIGNACIONES</div>
+                        </a>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="requests.html" class="full-width">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-comment-list"></i></div>
+                            <div class="navLateral-body-cr">SOLICITUDES</div>
+                        </a>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="maintenance.html" class="full-width">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-wrench"></i></div>
+                            <div class="navLateral-body-cr">MANTENIMIENTO</div>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <!-- pageContent -->
+    <section class="full-width pageContent">
+        <!-- navBar -->
+        <div class="full-width navBar">
+            <div class="full-width navBar-options">
+                <i class="zmdi zmdi-swap btn-menu" id="btn-menu"></i>
+                <div class="mdl-tooltip" for="btn-menu">Ocultar / Mostrar Menú</div>
+                <nav class="navBar-options-list">
+                    <ul class="list-unstyle">
+                        <li class="btn-Notification" id="notifications">
+                            <i class="zmdi zmdi-notifications"></i>
+                            <div class="mdl-tooltip" for="notifications">Notificaciones</div>
+                        </li>
+                        <li class="btn-exit" id="btn-exit">
+                            <i class="zmdi zmdi-power"></i>
+                            <div class="mdl-tooltip" for="btn-exit">Cerrar Sesión</div>
+                        </li>
+                        <li class="text-condensedLight noLink"><small>Soporte TI</small></li>
+                        <li class="noLink">
+                            <figure>
+                                <img src="assets/img/avatar-male.png" alt="Avatar">
+                            </figure>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <section class="full-width header-well">
+            <div class="full-width header-well-icon">
+                <i class="zmdi zmdi-account"></i>
+            </div>
+            <div class="full-width header-well-text">
+                <p class="text-condensedLight">
+                    <strong>Administradores y Soporte TI:</strong> Gestiona las cuentas de los usuarios del sistema. Puedes registrar técnicos de mesa de ayuda, ingenieros de soporte o administradores de red para que tengan acceso al control de inventario de activos.
+                </p>
+            </div>
+        </section>
+
+        <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+            <div class="mdl-tabs__tab-bar">
+                <a href="#tabNewAdmin" class="mdl-tabs__tab is-active">NUEVO USUARIO TI</a>
+                <a href="#tabListAdmins" class="mdl-tabs__tab" id="btn-list-tab">MESA DE AYUDA</a>
+            </div>
+
+            <!-- Nuevo Administrador -->
+            <div class="mdl-tabs__panel is-active" id="tabNewAdmin">
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--12-col">
+                        <div class="full-width panel">
+                            <div class="full-width panel-tittle text-center">
+                                Registrar Usuario Técnico / Administrador
+                            </div>
+                            <div class="full-width panel-content">
+                                <form id="form-add-admin">
+                                    <div class="mdl-grid">
+                                        <div class="mdl-cell mdl-cell--12-col">
+                                            <legend class="text-condensedLight"><i class="zmdi zmdi-border-color"></i> &nbsp; DATOS PERSONALES</legend>
+                                        </div>
+                                        <div class="mdl-cell mdl-cell--6-col">
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                <input class="mdl-textfield__input" type="text" pattern="[0-9]{8}" id="dniAdmin" required>
+                                                <label class="mdl-textfield__label" for="dniAdmin">DNI (8 dígitos)</label>
+                                                <span class="mdl-textfield__error">DNI inválido</span>
+                                            </div>
+                                        </div>
+                                        <div class="mdl-cell mdl-cell--6-col">
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                <input class="mdl-textfield__input" type="text" id="nameAdmin" required>
+                                                <label class="mdl-textfield__label" for="nameAdmin">Nombres</label>
+                                            </div>
+                                        </div>
+                                        <div class="mdl-cell mdl-cell--6-col">
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                <input class="mdl-textfield__input" type="text" id="lastnameAdmin" required>
+                                                <label class="mdl-textfield__label" for="lastnameAdmin">Apellidos</label>
+                                            </div>
+                                        </div>
+                                        <div class="mdl-cell mdl-cell--6-col">
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                <input class="mdl-textfield__input" type="email" id="emailAdmin" required>
+                                                <label class="mdl-textfield__label" for="emailAdmin">Correo Corporativo</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="mdl-cell mdl-cell--12-col">
+                                            <legend class="text-condensedLight"><i class="zmdi zmdi-lock"></i> &nbsp; CREDENCIALES Y ROL</legend>
+                                        </div>
+                                        <div class="mdl-cell mdl-cell--6-col">
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                <input class="mdl-textfield__input" type="text" id="userAdmin" required>
+                                                <label class="mdl-textfield__label" for="userAdmin">Nombre de Usuario</label>
+                                            </div>
+                                        </div>
+                                        <div class="mdl-cell mdl-cell--6-col">
+                                            <label style="color: var(--text-secondary); font-size: 13px;">Rol en el Sistema</label>
+                                            <select class="mdl-textfield__input" id="roleAdmin" required>
+                                                <option value="Administrador">Administrador (Control Total)</option>
+                                                <option value="Soporte TI">Soporte TI / Mesa de Ayuda</option>
+                                                <option value="Jefe de TI">Jefe de Área TI (Aprobador)</option>
+                                            </select>
+                                        </div>
+                                        <div class="mdl-cell mdl-cell--6-col">
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                <input class="mdl-textfield__input" type="password" id="passAdmin" required>
+                                                <label class="mdl-textfield__label" for="passAdmin">Contraseña</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="text-center">
+                                        <button type="submit" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored bg-primary" id="btn-addAdmin">
+                                            <i class="zmdi zmdi-plus"></i>
+                                        </button>
+                                        <div class="mdl-tooltip" for="btn-addAdmin">Crear Usuario</div>
+                                    </p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Listado Mesa de Ayuda -->
+            <div class="mdl-tabs__panel" id="tabListAdmins">
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--12-col">
+                        <div class="full-width panel">
+                            <div class="full-width panel-tittle text-center">
+                                Equipo de Soporte TI Autorizado
+                            </div>
+                            <div class="full-width panel-content">
+                                <div class="table-responsive">
+                                    <table class="mdl-data-table mdl-js-data-table full-width">
+                                        <thead>
+                                            <tr>
+                                                <th class="mdl-data-table__cell--non-numeric">Usuario</th>
+                                                <th class="mdl-data-table__cell--non-numeric">Nombre Completo</th>
+                                                <th class="mdl-data-table__cell--non-numeric">Correo</th>
+                                                <th class="mdl-data-table__cell--non-numeric">Rol de Sistema</th>
+                                                <th class="mdl-data-table__cell--non-numeric">Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="table-admins-body">
+                                            <!-- Poblar dinámicamente -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        $(document).ready(function() {
+            // Inicializar localStorage de admins si no existe
+            if(!localStorage.getItem('it_admins')) {
+                const defaultAdmins = [
+                    { id: '1', dni: '12345678', name: 'Soporte TI', lastname: 'Admin', email: 'soporte.admin@empresa.com', user: 'admin', role: 'Administrador' },
+                    { id: '2', dni: '87654321', name: 'Diego', lastname: 'Salas', email: 'dsalas@empresa.com', user: 'dsalas', role: 'Soporte TI' }
+                ];
+                localStorage.setItem('it_admins', JSON.stringify(defaultAdmins));
+            }
+
+            function getAdmins() {
+                return JSON.parse(localStorage.getItem('it_admins')) || [];
+            }
+
+            function renderTable() {
+                const admins = getAdmins();
+                const $tbody = $('#table-admins-body');
+                $tbody.empty();
+
+                admins.forEach(a => {
+                    $tbody.append(`
+                        <tr>
+                            <td class="mdl-data-table__cell--non-numeric"><strong>${a.user}</strong></td>
+                            <td class="mdl-data-table__cell--non-numeric">${a.name} ${a.lastname}</td>
+                            <td class="mdl-data-table__cell--non-numeric"><code>${a.email}</code></td>
+                            <td class="mdl-data-table__cell--non-numeric">${a.role}</td>
+                            <td class="mdl-data-table__cell--non-numeric">
+                                <button class="mdl-button mdl-button--icon btn-delete-admin" data-id="${a.id}" style="color: var(--accent-crimson);">
+                                    <i class="zmdi zmdi-delete"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    `);
+                });
+            }
+
+            renderTable();
+
+            $('#form-add-admin').on('submit', function(e) {
+                e.preventDefault();
+                const admins = getAdmins();
+                const newAdmin = {
+                    id: Date.now().toString(),
+                    dni: $('#dniAdmin').val().trim(),
+                    name: $('#nameAdmin').val().trim(),
+                    lastname: $('#lastnameAdmin').val().trim(),
+                    email: $('#emailAdmin').val().trim(),
+                    user: $('#userAdmin').val().trim(),
+                    role: $('#roleAdmin').val()
+                };
+
+                const exists = admins.some(a => a.user.toLowerCase() === newAdmin.user.toLowerCase() || a.dni === newAdmin.dni);
+                if(exists) {
+                    swal('Error', 'Ya existe un administrador con el mismo DNI o Nombre de Usuario.', 'error');
+                    return;
+                }
+
+                admins.push(newAdmin);
+                localStorage.setItem('it_admins', JSON.stringify(admins));
+                swal('¡Éxito!', 'El nuevo usuario de soporte técnico ha sido registrado.', 'success');
+                this.reset();
+                renderTable();
+                $('#btn-list-tab').click();
+            });
+
+            $(document).on('click', '.btn-delete-admin', function() {
+                const id = $(this).data('id').toString();
+                const admins = getAdmins();
+                if(admins.length <= 1) {
+                    swal('Acción denegada', 'Debe existir al menos una cuenta de administrador en el sistema.', 'warning');
+                    return;
+                }
+
+                swal({
+                    title: '¿Estás seguro?',
+                    text: 'Se eliminará la cuenta del equipo de soporte.',
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Sí, eliminar',
+                    cancelButtonText: 'Cancelar'
+                }, function(isConfirm) {
+                    if (isConfirm) {
+                        const filtered = admins.filter(a => a.id !== id);
+                        localStorage.setItem('it_admins', JSON.stringify(filtered));
+                        renderTable();
+                        swal('Eliminado', 'La cuenta ha sido eliminada.', 'success');
+                    }
+                });
+            });
+
+            $('#btn-list-tab').on('click', function() {
+                renderTable();
+            });
+        });
+    </script>
+</body>
+</html>

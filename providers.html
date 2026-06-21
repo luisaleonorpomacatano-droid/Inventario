@@ -1,0 +1,374 @@
+<!-- 
+* SCTA - Sistema de Control de Activos Tecnológicos
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Proveedores | SCTA</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/sweetalert2.css">
+    <link rel="stylesheet" href="css/material.min.css">
+    <link rel="stylesheet" href="css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/material.min.js" ></script>
+    <script src="js/sweetalert2.min.js" ></script>
+    <script src="js/jquery.mCustomScrollbar.concat.min.js" ></script>
+    <script src="js/db.js" ></script>
+    <script src="js/main.js" ></script>
+</head>
+<body>
+    <!-- Notifications area -->
+    <section class="full-width container-notifications">
+        <div class="full-width container-notifications-bg btn-Notification"></div>
+        <section class="NotificationArea">
+            <div class="full-width NotificationArea-title">Notificaciones <i class="zmdi zmdi-close btn-Notification"></i></div>
+            <a href="#" class="Notification" id="notifation-1">
+                <div class="Notification-icon"><i class="zmdi zmdi-alert-triangle" style="color: var(--accent-amber);"></i></div>
+                <div class="Notification-text">
+                    <p><strong>Garantías por vencer</strong><br>Hay 2 equipos cuya garantía expira este mes.</p>
+                    <small>Hace 5 minutos</small>
+                </div>
+            </a>
+        </section>
+    </section>
+
+    <!-- navLateral -->
+    <section class="full-width navLateral">
+        <div class="full-width navLateral-bg btn-menu"></div>
+        <div class="full-width navLateral-body">
+            <div class="full-width navLateral-body-logo tittles">
+                <i class="zmdi zmdi-close btn-menu"></i> SCTA TI
+            </div>
+            <figure class="full-width navLateral-body-tittle-menu">
+                <div>
+                    <img src="assets/img/avatar-male.png" alt="Avatar" class="img-responsive">
+                </div>
+                <figcaption>
+                    <span>Soporte TI Admin</span>
+                    <small>Administrador</small>
+                </figcaption>
+            </figure>
+            <nav class="full-width">
+                <ul class="full-width list-unstyle menu-principal">
+                    <li class="full-width">
+                        <a href="home.html" class="full-width">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-view-dashboard"></i></div>
+                            <div class="navLateral-body-cr">DASHBOARD</div>
+                        </a>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="#!" class="full-width btn-subMenu">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-case"></i></div>
+                            <div class="navLateral-body-cr">ADMINISTRACIÓN</div>
+                            <span class="zmdi zmdi-chevron-left"></span>
+                        </a>
+                        <ul class="full-width menu-principal sub-menu-options">
+                            <li class="full-width">
+                                <a href="providers.html" class="full-width active-link">
+                                    <div class="navLateral-body-cl"><i class="zmdi zmdi-truck"></i></div>
+                                    <div class="navLateral-body-cr">PROVEEDORES</div>
+                                </a>
+                            </li>
+                            <li class="full-width">
+                                <a href="categories.html" class="full-width">
+                                    <div class="navLateral-body-cl"><i class="zmdi zmdi-label"></i></div>
+                                    <div class="navLateral-body-cr">CATEGORÍAS</div>
+                                </a>
+                            </li>
+                            <li class="full-width">
+                                <a href="warranties.html" class="full-width">
+                                    <div class="navLateral-body-cl"><i class="zmdi zmdi-shield-security"></i></div>
+                                    <div class="navLateral-body-cr">GARANTÍAS</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="#!" class="full-width btn-subMenu">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-accounts"></i></div>
+                            <div class="navLateral-body-cr">USUARIOS TI</div>
+                            <span class="zmdi zmdi-chevron-left"></span>
+                        </a>
+                        <ul class="full-width menu-principal sub-menu-options">
+                            <li class="full-width">
+                                <a href="admin.html" class="full-width">
+                                    <div class="navLateral-body-cl"><i class="zmdi zmdi-account"></i></div>
+                                    <div class="navLateral-body-cr">SOPORTE TI</div>
+                                </a>
+                            </li>
+                            <li class="full-width">
+                                <a href="employees.html" class="full-width">
+                                    <div class="navLateral-body-cl"><i class="zmdi zmdi-accounts-list"></i></div>
+                                    <div class="navLateral-body-cr">COLABORADORES</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="assets.html" class="full-width">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-laptop-mac"></i></div>
+                            <div class="navLateral-body-cr">ACTIVOS TECNOLÓGICOS</div>
+                        </a>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="assignments.html" class="full-width">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-assignment-returned"></i></div>
+                            <div class="navLateral-body-cr">ASIGNACIONES</div>
+                        </a>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="requests.html" class="full-width">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-comment-list"></i></div>
+                            <div class="navLateral-body-cr">SOLICITUDES</div>
+                        </a>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="maintenance.html" class="full-width">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-wrench"></i></div>
+                            <div class="navLateral-body-cr">MANTENIMIENTO</div>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <!-- pageContent -->
+    <section class="full-width pageContent">
+        <!-- navBar -->
+        <div class="full-width navBar">
+            <div class="full-width navBar-options">
+                <i class="zmdi zmdi-swap btn-menu" id="btn-menu"></i>
+                <div class="mdl-tooltip" for="btn-menu">Ocultar / Mostrar Menú</div>
+                <nav class="navBar-options-list">
+                    <ul class="list-unstyle">
+                        <li class="btn-Notification" id="notifications">
+                            <i class="zmdi zmdi-notifications"></i>
+                            <div class="mdl-tooltip" for="notifications">Notificaciones</div>
+                        </li>
+                        <li class="btn-exit" id="btn-exit">
+                            <i class="zmdi zmdi-power"></i>
+                            <div class="mdl-tooltip" for="btn-exit">Cerrar Sesión</div>
+                        </li>
+                        <li class="text-condensedLight noLink"><small>Soporte TI</small></li>
+                        <li class="noLink">
+                            <figure>
+                                <img src="assets/img/avatar-male.png" alt="Avatar">
+                            </figure>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <section class="full-width header-well">
+            <div class="full-width header-well-icon">
+                <i class="zmdi zmdi-truck"></i>
+            </div>
+            <div class="full-width header-well-text">
+                <p class="text-condensedLight">
+                    <strong>Proveedores Tecnológicos:</strong> Registra y gestiona los socios comerciales que proveen los equipos, licencias y servicios de soporte. Esto te permitirá asociar compras y hacer un seguimiento efectivo de los contratos y garantías.
+                </p>
+            </div>
+        </section>
+
+        <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+            <div class="mdl-tabs__tab-bar">
+                <a href="#tabNewProvider" class="mdl-tabs__tab is-active">NUEVO PROVEEDOR</a>
+                <a href="#tabListProviders" class="mdl-tabs__tab" id="btn-list-tab">LISTADO</a>
+            </div>
+
+            <!-- Nuevo Proveedor -->
+            <div class="mdl-tabs__panel is-active" id="tabNewProvider">
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--12-col">
+                        <div class="full-width panel">
+                            <div class="full-width panel-tittle text-center">
+                                Registrar Proveedor de Tecnología
+                            </div>
+                            <div class="full-width panel-content">
+                                <form id="form-add-provider">
+                                    <div class="mdl-grid">
+                                        <div class="mdl-cell mdl-cell--12-col">
+                                            <legend class="text-condensedLight"><i class="zmdi zmdi-border-color"></i> &nbsp; DATOS COMERCIALES</legend>
+                                        </div>
+                                        <div class="mdl-cell mdl-cell--6-col">
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                <input class="mdl-textfield__input" type="text" pattern="[0-9]{11}" id="rucProvider" required>
+                                                <label class="mdl-textfield__label" for="rucProvider">RUC (11 dígitos)</label>
+                                                <span class="mdl-textfield__error">Número de RUC no válido</span>
+                                            </div>
+                                        </div>
+                                        <div class="mdl-cell mdl-cell--6-col">
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                <input class="mdl-textfield__input" type="text" id="nameProvider" required>
+                                                <label class="mdl-textfield__label" for="nameProvider">Razón Social / Nombre Comercial</label>
+                                            </div>
+                                        </div>
+                                        <div class="mdl-cell mdl-cell--6-col">
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                <input class="mdl-textfield__input" type="tel" pattern="[0-9\-+ ]{7,15}" id="phoneProvider" required>
+                                                <label class="mdl-textfield__label" for="phoneProvider">Teléfono de Contacto</label>
+                                                <span class="mdl-textfield__error">Teléfono inválido</span>
+                                            </div>
+                                        </div>
+                                        <div class="mdl-cell mdl-cell--6-col">
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                <input class="mdl-textfield__input" type="email" id="emailProvider" required>
+                                                <label class="mdl-textfield__label" for="emailProvider">Correo Electrónico Comercial</label>
+                                                <span class="mdl-textfield__error">Correo electrónico inválido</span>
+                                            </div>
+                                        </div>
+                                        <div class="mdl-cell mdl-cell--12-col">
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                <input class="mdl-textfield__input" type="text" id="addressProvider" required>
+                                                <label class="mdl-textfield__label" for="addressProvider">Dirección Fiscal / Oficina</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="text-center">
+                                        <button type="submit" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored bg-primary" id="btn-addProvider">
+                                            <i class="zmdi zmdi-plus"></i>
+                                        </button>
+                                        <div class="mdl-tooltip" for="btn-addProvider">Agregar Proveedor</div>
+                                    </p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Listado Proveedores -->
+            <div class="mdl-tabs__panel" id="tabListProviders">
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--12-col">
+                        <div class="full-width panel">
+                            <div class="full-width panel-tittle text-center">
+                                Proveedores Registrados
+                            </div>
+                            <div class="full-width panel-content">
+                                <div class="table-responsive">
+                                    <table class="mdl-data-table mdl-js-data-table full-width">
+                                        <thead>
+                                            <tr>
+                                                <th class="mdl-data-table__cell--non-numeric">RUC</th>
+                                                <th class="mdl-data-table__cell--non-numeric">Razón Social</th>
+                                                <th class="mdl-data-table__cell--non-numeric">Teléfono</th>
+                                                <th class="mdl-data-table__cell--non-numeric">Correo</th>
+                                                <th class="mdl-data-table__cell--non-numeric">Dirección</th>
+                                                <th class="mdl-data-table__cell--non-numeric">Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="table-providers-body">
+                                            <!-- Poblar dinámicamente -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        $(document).ready(function() {
+            function renderTable() {
+                const providers = DB.getProviders();
+                const $tbody = $('#table-providers-body');
+                $tbody.empty();
+
+                if (providers.length === 0) {
+                    $tbody.append('<tr><td colspan="6" class="text-center text-secondary">No hay proveedores registrados.</td></tr>');
+                    return;
+                }
+
+                providers.forEach(p => {
+                    $tbody.append(`
+                        <tr>
+                            <td class="mdl-data-table__cell--non-numeric"><strong>${p.ruc}</strong></td>
+                            <td class="mdl-data-table__cell--non-numeric">${p.name}</td>
+                            <td class="mdl-data-table__cell--non-numeric">${p.phone}</td>
+                            <td class="mdl-data-table__cell--non-numeric"><code>${p.email}</code></td>
+                            <td class="mdl-data-table__cell--non-numeric">${p.address}</td>
+                            <td class="mdl-data-table__cell--non-numeric">
+                                <button class="mdl-button mdl-button--icon btn-delete-provider" data-id="${p.id}" style="color: var(--accent-crimson);">
+                                    <i class="zmdi zmdi-delete"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    `);
+                });
+            }
+
+            renderTable();
+
+            $('#form-add-provider').on('submit', function(e) {
+                e.preventDefault();
+                const newProv = {
+                    ruc: $('#rucProvider').val().trim(),
+                    name: $('#nameProvider').val().trim(),
+                    phone: $('#phoneProvider').val().trim(),
+                    email: $('#emailProvider').val().trim(),
+                    address: $('#addressProvider').val().trim()
+                };
+
+                const exists = DB.getProviders().some(p => p.ruc === newProv.ruc || p.name.toLowerCase() === newProv.name.toLowerCase());
+                if (exists) {
+                    swal('Error', 'Ya existe un proveedor con el mismo RUC o Razón Social.', 'error');
+                    return;
+                }
+
+                DB.saveProvider(newProv);
+                swal('¡Éxito!', 'El proveedor tecnológico ha sido registrado.', 'success');
+                this.reset();
+                renderTable();
+                $('#btn-list-tab').click();
+            });
+
+            $(document).on('click', '.btn-delete-provider', function() {
+                const provId = $(this).data('id');
+                const hasAssets = DB.getAssets().some(a => a.providerId === provId.toString());
+
+                if (hasAssets) {
+                    swal('Acción denegada', 'No puedes eliminar este proveedor porque hay activos de TI asociados a él.', 'warning');
+                    return;
+                }
+
+                swal({
+                    title: '¿Estás seguro?',
+                    text: 'Se eliminará el proveedor del sistema.',
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Sí, eliminar',
+                    cancelButtonText: 'Cancelar'
+                }, function(isConfirm) {
+                    if (isConfirm) {
+                        let providers = DB.getProviders();
+                        providers = providers.filter(p => p.id !== provId.toString());
+                        DB.setData('it_providers', providers);
+                        renderTable();
+                        swal('Eliminado', 'El proveedor ha sido retirado del sistema.', 'success');
+                    }
+                });
+            });
+
+            $('#btn-list-tab').on('click', function() {
+                renderTable();
+            });
+        });
+    </script>
+</body>
+</html>

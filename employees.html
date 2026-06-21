@@ -1,0 +1,402 @@
+<!-- 
+* SCTA - Sistema de Control de Activos Tecnológicos
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Colaboradores | SCTA</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/sweetalert2.css">
+    <link rel="stylesheet" href="css/material.min.css">
+    <link rel="stylesheet" href="css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/material.min.js" ></script>
+    <script src="js/sweetalert2.min.js" ></script>
+    <script src="js/jquery.mCustomScrollbar.concat.min.js" ></script>
+    <script src="js/db.js" ></script>
+    <script src="js/main.js" ></script>
+</head>
+<body>
+    <!-- Notifications area -->
+    <section class="full-width container-notifications">
+        <div class="full-width container-notifications-bg btn-Notification"></div>
+        <section class="NotificationArea">
+            <div class="full-width NotificationArea-title">Notificaciones <i class="zmdi zmdi-close btn-Notification"></i></div>
+            <a href="#" class="Notification" id="notifation-1">
+                <div class="Notification-icon"><i class="zmdi zmdi-alert-triangle" style="color: var(--accent-amber);"></i></div>
+                <div class="Notification-text">
+                    <p><strong>Garantías por vencer</strong><br>Hay 2 equipos cuya garantía expira este mes.</p>
+                    <small>Hace 5 minutos</small>
+                </div>
+            </a>
+        </section>
+    </section>
+
+    <!-- navLateral -->
+    <section class="full-width navLateral">
+        <div class="full-width navLateral-bg btn-menu"></div>
+        <div class="full-width navLateral-body">
+            <div class="full-width navLateral-body-logo tittles">
+                <i class="zmdi zmdi-close btn-menu"></i> SCTA TI
+            </div>
+            <figure class="full-width navLateral-body-tittle-menu">
+                <div>
+                    <img src="assets/img/avatar-male.png" alt="Avatar" class="img-responsive">
+                </div>
+                <figcaption>
+                    <span>Soporte TI Admin</span>
+                    <small>Administrador</small>
+                </figcaption>
+            </figure>
+            <nav class="full-width">
+                <ul class="full-width list-unstyle menu-principal">
+                    <li class="full-width">
+                        <a href="home.html" class="full-width">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-view-dashboard"></i></div>
+                            <div class="navLateral-body-cr">DASHBOARD</div>
+                        </a>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="#!" class="full-width btn-subMenu">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-case"></i></div>
+                            <div class="navLateral-body-cr">ADMINISTRACIÓN</div>
+                            <span class="zmdi zmdi-chevron-left"></span>
+                        </a>
+                        <ul class="full-width menu-principal sub-menu-options">
+                            <li class="full-width">
+                                <a href="providers.html" class="full-width">
+                                    <div class="navLateral-body-cl"><i class="zmdi zmdi-truck"></i></div>
+                                    <div class="navLateral-body-cr">PROVEEDORES</div>
+                                </a>
+                            </li>
+                            <li class="full-width">
+                                <a href="categories.html" class="full-width">
+                                    <div class="navLateral-body-cl"><i class="zmdi zmdi-label"></i></div>
+                                    <div class="navLateral-body-cr">CATEGORÍAS</div>
+                                </a>
+                            </li>
+                            <li class="full-width">
+                                <a href="warranties.html" class="full-width">
+                                    <div class="navLateral-body-cl"><i class="zmdi zmdi-shield-security"></i></div>
+                                    <div class="navLateral-body-cr">GARANTÍAS</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="#!" class="full-width btn-subMenu">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-accounts"></i></div>
+                            <div class="navLateral-body-cr">USUARIOS TI</div>
+                            <span class="zmdi zmdi-chevron-left"></span>
+                        </a>
+                        <ul class="full-width menu-principal sub-menu-options">
+                            <li class="full-width">
+                                <a href="admin.html" class="full-width">
+                                    <div class="navLateral-body-cl"><i class="zmdi zmdi-account"></i></div>
+                                    <div class="navLateral-body-cr">SOPORTE TI</div>
+                                </a>
+                            </li>
+                            <li class="full-width">
+                                <a href="employees.html" class="full-width active-link">
+                                    <div class="navLateral-body-cl"><i class="zmdi zmdi-accounts-list"></i></div>
+                                    <div class="navLateral-body-cr">COLABORADORES</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="assets.html" class="full-width">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-laptop-mac"></i></div>
+                            <div class="navLateral-body-cr">ACTIVOS TECNOLÓGICOS</div>
+                        </a>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="assignments.html" class="full-width">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-assignment-returned"></i></div>
+                            <div class="navLateral-body-cr">ASIGNACIONES</div>
+                        </a>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="requests.html" class="full-width">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-comment-list"></i></div>
+                            <div class="navLateral-body-cr">SOLICITUDES</div>
+                        </a>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="maintenance.html" class="full-width">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-wrench"></i></div>
+                            <div class="navLateral-body-cr">MANTENIMIENTO</div>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <!-- pageContent -->
+    <section class="full-width pageContent">
+        <!-- navBar -->
+        <div class="full-width navBar">
+            <div class="full-width navBar-options">
+                <i class="zmdi zmdi-swap btn-menu" id="btn-menu"></i>
+                <div class="mdl-tooltip" for="btn-menu">Ocultar / Mostrar Menú</div>
+                <nav class="navBar-options-list">
+                    <ul class="list-unstyle">
+                        <li class="btn-Notification" id="notifications">
+                            <i class="zmdi zmdi-notifications"></i>
+                            <div class="mdl-tooltip" for="notifications">Notificaciones</div>
+                        </li>
+                        <li class="btn-exit" id="btn-exit">
+                            <i class="zmdi zmdi-power"></i>
+                            <div class="mdl-tooltip" for="btn-exit">Cerrar Sesión</div>
+                        </li>
+                        <li class="text-condensedLight noLink"><small>Soporte TI</small></li>
+                        <li class="noLink">
+                            <figure>
+                                <img src="assets/img/avatar-male.png" alt="Avatar">
+                            </figure>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <section class="full-width header-well">
+            <div class="full-width header-well-icon">
+                <i class="zmdi zmdi-accounts-list"></i>
+            </div>
+            <div class="full-width header-well-text">
+                <p class="text-condensedLight">
+                    <strong>Gestión de Colaboradores:</strong> Registra al personal de la empresa de las diferentes áreas. Al tenerlos registrados, podrás asociar y asignar los activos de hardware a cada uno, manteniendo un control estricto de las actas de conformidad.
+                </p>
+            </div>
+        </section>
+
+        <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+            <div class="mdl-tabs__tab-bar">
+                <a href="#tabNewEmployee" class="mdl-tabs__tab is-active">NUEVO COLABORADOR</a>
+                <a href="#tabListEmployees" class="mdl-tabs__tab" id="btn-list-tab">LISTADO</a>
+            </div>
+
+            <!-- Nuevo Colaborador -->
+            <div class="mdl-tabs__panel is-active" id="tabNewEmployee">
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--12-col">
+                        <div class="full-width panel">
+                            <div class="full-width panel-tittle text-center">
+                                Registrar Nuevo Colaborador
+                            </div>
+                            <div class="full-width panel-content">
+                                <form id="form-add-employee">
+                                    <div class="mdl-grid">
+                                        <div class="mdl-cell mdl-cell--12-col">
+                                            <legend class="text-condensedLight"><i class="zmdi zmdi-border-color"></i> &nbsp; DATOS PERSONALES</legend>
+                                        </div>
+                                        <div class="mdl-cell mdl-cell--6-col">
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                <input class="mdl-textfield__input" type="text" pattern="[0-9]{8}" id="dniEmployee" required>
+                                                <label class="mdl-textfield__label" for="dniEmployee">DNI / Documento de Identidad (8 dígitos)</label>
+                                                <span class="mdl-textfield__error">Número de DNI no válido</span>
+                                            </div>
+                                        </div>
+                                        <div class="mdl-cell mdl-cell--6-col">
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                <input class="mdl-textfield__input" type="text" id="nameEmployee" required>
+                                                <label class="mdl-textfield__label" for="nameEmployee">Nombres</label>
+                                            </div>
+                                        </div>
+                                        <div class="mdl-cell mdl-cell--6-col">
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                <input class="mdl-textfield__input" type="text" id="lastnameEmployee" required>
+                                                <label class="mdl-textfield__label" for="lastnameEmployee">Apellidos</label>
+                                            </div>
+                                        </div>
+                                        <div class="mdl-cell mdl-cell--6-col">
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                <input class="mdl-textfield__input" type="email" id="emailEmployee" required>
+                                                <label class="mdl-textfield__label" for="emailEmployee">Correo Electrónico Corporativo</label>
+                                                <span class="mdl-textfield__error">Correo electrónico inválido</span>
+                                            </div>
+                                        </div>
+                                        <div class="mdl-cell mdl-cell--6-col">
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                <input class="mdl-textfield__input" type="tel" pattern="[0-9]{9}" id="phoneEmployee" required>
+                                                <label class="mdl-textfield__label" for="phoneEmployee">Teléfono / Celular (9 dígitos)</label>
+                                                <span class="mdl-textfield__error">Celular inválido</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="mdl-cell mdl-cell--12-col">
+                                            <legend class="text-condensedLight"><i class="zmdi zmdi-balance"></i> &nbsp; ÁREA Y UBICACIÓN CORPORATIVA</legend>
+                                        </div>
+                                        <div class="mdl-cell mdl-cell--6-col">
+                                            <label style="color: var(--text-secondary); font-size: 13px;">Área / Departamento</label>
+                                            <select class="mdl-textfield__input" id="areaEmployee" required>
+                                                <option value="Administración">Administración</option>
+                                                <option value="Comercial">Comercial</option>
+                                                <option value="Soporte TI">Soporte TI</option>
+                                                <option value="Recursos Humanos">Recursos Humanos</option>
+                                                <option value="Operaciones / Producción">Operaciones / Producción</option>
+                                                <option value="Finanzas y Contabilidad">Finanzas y Contabilidad</option>
+                                            </select>
+                                        </div>
+                                        <div class="mdl-cell mdl-cell--6-col">
+                                            <label style="color: var(--text-secondary); font-size: 13px;">Sede de Asignación</label>
+                                            <select class="mdl-textfield__input" id="locationEmployee" required>
+                                                <option value="Oficina San Borja">Oficina San Borja</option>
+                                                <option value="Oficina Miraflores">Oficina Miraflores</option>
+                                                <option value="Sede Arequipa">Sede Arequipa</option>
+                                                <option value="Teletrabajo / Remoto">Teletrabajo / Remoto</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <p class="text-center">
+                                        <button type="submit" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored bg-primary" id="btn-addEmployee">
+                                            <i class="zmdi zmdi-plus"></i>
+                                        </button>
+                                        <div class="mdl-tooltip" for="btn-addEmployee">Agregar Colaborador</div>
+                                    </p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Listado Colaboradores -->
+            <div class="mdl-tabs__panel" id="tabListEmployees">
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--12-col">
+                        <div class="full-width panel">
+                            <div class="full-width panel-tittle text-center">
+                                Colaboradores Registrados
+                            </div>
+                            <div class="full-width panel-content">
+                                <div class="table-responsive">
+                                    <table class="mdl-data-table mdl-js-data-table full-width">
+                                        <thead>
+                                            <tr>
+                                                <th class="mdl-data-table__cell--non-numeric">DNI</th>
+                                                <th class="mdl-data-table__cell--non-numeric">Nombre Completo</th>
+                                                <th class="mdl-data-table__cell--non-numeric">Correo</th>
+                                                <th class="mdl-data-table__cell--non-numeric">Teléfono</th>
+                                                <th class="mdl-data-table__cell--non-numeric">Área</th>
+                                                <th class="mdl-data-table__cell--non-numeric">Sede</th>
+                                                <th class="mdl-data-table__cell--non-numeric">Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="table-employees-body">
+                                            <!-- Poblar dinámicamente -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        $(document).ready(function() {
+            function renderTable() {
+                const employees = DB.getEmployees();
+                const $tbody = $('#table-employees-body');
+                $tbody.empty();
+
+                if (employees.length === 0) {
+                    $tbody.append('<tr><td colspan="7" class="text-center text-secondary">No hay colaboradores registrados.</td></tr>');
+                    return;
+                }
+
+                employees.forEach(e => {
+                    $tbody.append(`
+                        <tr>
+                            <td class="mdl-data-table__cell--non-numeric"><strong>${e.dni}</strong></td>
+                            <td class="mdl-data-table__cell--non-numeric">${e.name} ${e.lastname}</td>
+                            <td class="mdl-data-table__cell--non-numeric"><code>${e.email}</code></td>
+                            <td class="mdl-data-table__cell--non-numeric">${e.phone}</td>
+                            <td class="mdl-data-table__cell--non-numeric">${e.area}</td>
+                            <td class="mdl-data-table__cell--non-numeric">${e.location}</td>
+                            <td class="mdl-data-table__cell--non-numeric">
+                                <button class="mdl-button mdl-button--icon btn-delete-employee" data-id="${e.id}" style="color: var(--accent-crimson);">
+                                    <i class="zmdi zmdi-delete"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    `);
+                });
+            }
+
+            renderTable();
+
+            $('#form-add-employee').on('submit', function(e) {
+                e.preventDefault();
+                const newEmp = {
+                    dni: $('#dniEmployee').val().trim(),
+                    name: $('#nameEmployee').val().trim(),
+                    lastname: $('#lastnameEmployee').val().trim(),
+                    email: $('#emailEmployee').val().trim(),
+                    phone: $('#phoneEmployee').val().trim(),
+                    area: $('#areaEmployee').val(),
+                    location: $('#locationEmployee').val()
+                };
+
+                const exists = DB.getEmployees().some(emp => emp.dni === newEmp.dni || emp.email.toLowerCase() === newEmp.email.toLowerCase());
+                if (exists) {
+                    swal('Error', 'Ya existe un colaborador con el mismo DNI o Correo Corporativo.', 'error');
+                    return;
+                }
+
+                DB.saveEmployee(newEmp);
+                swal('¡Éxito!', 'El colaborador ha sido registrado.', 'success');
+                this.reset();
+                renderTable();
+                $('#btn-list-tab').click();
+            });
+
+            $(document).on('click', '.btn-delete-employee', function() {
+                const empId = $(this).data('id');
+                const hasAssigned = DB.getAssets().some(a => a.employeeId === empId.toString());
+
+                if (hasAssigned) {
+                    swal('Acción denegada', 'No puedes eliminar un colaborador que tiene activos de TI asignados.', 'warning');
+                    return;
+                }
+
+                swal({
+                    title: '¿Estás seguro?',
+                    text: 'Se eliminará el colaborador de la base de datos.',
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Sí, eliminar',
+                    cancelButtonText: 'Cancelar'
+                }, function(isConfirm) {
+                    if (isConfirm) {
+                        let employees = DB.getEmployees();
+                        employees = employees.filter(emp => emp.id !== empId.toString());
+                        DB.setData('it_employees', employees);
+                        renderTable();
+                        swal('Eliminado', 'El colaborador ha sido retirado del sistema.', 'success');
+                    }
+                });
+            });
+
+            $('#btn-list-tab').on('click', function() {
+                renderTable();
+            });
+        });
+    </script>
+</body>
+</html>

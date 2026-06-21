@@ -1,0 +1,437 @@
+<!-- 
+* SCTA - Sistema de Control de Activos Tecnológicos
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mantenimiento TI | SCTA</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/sweetalert2.css">
+    <link rel="stylesheet" href="css/material.min.css">
+    <link rel="stylesheet" href="css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/material.min.js" ></script>
+    <script src="js/sweetalert2.min.js" ></script>
+    <script src="js/jquery.mCustomScrollbar.concat.min.js" ></script>
+    <script src="js/db.js" ></script>
+    <script src="js/main.js" ></script>
+</head>
+<body>
+    <!-- Notifications area -->
+    <section class="full-width container-notifications">
+        <div class="full-width container-notifications-bg btn-Notification"></div>
+        <section class="NotificationArea">
+            <div class="full-width NotificationArea-title">Notificaciones <i class="zmdi zmdi-close btn-Notification"></i></div>
+            <a href="#" class="Notification" id="notifation-1">
+                <div class="Notification-icon"><i class="zmdi zmdi-alert-triangle" style="color: var(--accent-amber);"></i></div>
+                <div class="Notification-text">
+                    <p><strong>Garantías por vencer</strong><br>Hay 2 equipos cuya garantía expira este mes.</p>
+                    <small>Hace 5 minutos</small>
+                </div>
+            </a>
+        </section>
+    </section>
+
+    <!-- navLateral -->
+    <section class="full-width navLateral">
+        <div class="full-width navLateral-bg btn-menu"></div>
+        <div class="full-width navLateral-body">
+            <div class="full-width navLateral-body-logo tittles">
+                <i class="zmdi zmdi-close btn-menu"></i> SCTA TI
+            </div>
+            <figure class="full-width navLateral-body-tittle-menu">
+                <div>
+                    <img src="assets/img/avatar-male.png" alt="Avatar" class="img-responsive">
+                </div>
+                <figcaption>
+                    <span>Soporte TI Admin</span>
+                    <small>Administrador</small>
+                </figcaption>
+            </figure>
+            <nav class="full-width">
+                <ul class="full-width list-unstyle menu-principal">
+                    <li class="full-width">
+                        <a href="home.html" class="full-width">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-view-dashboard"></i></div>
+                            <div class="navLateral-body-cr">DASHBOARD</div>
+                        </a>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="#!" class="full-width btn-subMenu">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-case"></i></div>
+                            <div class="navLateral-body-cr">ADMINISTRACIÓN</div>
+                            <span class="zmdi zmdi-chevron-left"></span>
+                        </a>
+                        <ul class="full-width menu-principal sub-menu-options">
+                            <li class="full-width">
+                                <a href="providers.html" class="full-width">
+                                    <div class="navLateral-body-cl"><i class="zmdi zmdi-truck"></i></div>
+                                    <div class="navLateral-body-cr">PROVEEDORES</div>
+                                </a>
+                            </li>
+                            <li class="full-width">
+                                <a href="categories.html" class="full-width">
+                                    <div class="navLateral-body-cl"><i class="zmdi zmdi-label"></i></div>
+                                    <div class="navLateral-body-cr">CATEGORÍAS</div>
+                                </a>
+                            </li>
+                            <li class="full-width">
+                                <a href="warranties.html" class="full-width">
+                                    <div class="navLateral-body-cl"><i class="zmdi zmdi-shield-security"></i></div>
+                                    <div class="navLateral-body-cr">GARANTÍAS</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="#!" class="full-width btn-subMenu">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-accounts"></i></div>
+                            <div class="navLateral-body-cr">USUARIOS TI</div>
+                            <span class="zmdi zmdi-chevron-left"></span>
+                        </a>
+                        <ul class="full-width menu-principal sub-menu-options">
+                            <li class="full-width">
+                                <a href="admin.html" class="full-width">
+                                    <div class="navLateral-body-cl"><i class="zmdi zmdi-account"></i></div>
+                                    <div class="navLateral-body-cr">SOPORTE TI</div>
+                                </a>
+                            </li>
+                            <li class="full-width">
+                                <a href="employees.html" class="full-width">
+                                    <div class="navLateral-body-cl"><i class="zmdi zmdi-accounts-list"></i></div>
+                                    <div class="navLateral-body-cr">COLABORADORES</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="assets.html" class="full-width">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-laptop-mac"></i></div>
+                            <div class="navLateral-body-cr">ACTIVOS TECNOLÓGICOS</div>
+                        </a>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="assignments.html" class="full-width">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-assignment-returned"></i></div>
+                            <div class="navLateral-body-cr">ASIGNACIONES</div>
+                        </a>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="requests.html" class="full-width">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-comment-list"></i></div>
+                            <div class="navLateral-body-cr">SOLICITUDES</div>
+                        </a>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="maintenance.html" class="full-width active-link">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-wrench"></i></div>
+                            <div class="navLateral-body-cr">MANTENIMIENTO</div>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <!-- pageContent -->
+    <section class="full-width pageContent">
+        <!-- navBar -->
+        <div class="full-width navBar">
+            <div class="full-width navBar-options">
+                <i class="zmdi zmdi-swap btn-menu" id="btn-menu"></i>
+                <div class="mdl-tooltip" for="btn-menu">Ocultar / Mostrar Menú</div>
+                <nav class="navBar-options-list">
+                    <ul class="list-unstyle">
+                        <li class="btn-Notification" id="notifications">
+                            <i class="zmdi zmdi-notifications"></i>
+                            <div class="mdl-tooltip" for="notifications">Notificaciones</div>
+                        </li>
+                        <li class="btn-exit" id="btn-exit">
+                            <i class="zmdi zmdi-power"></i>
+                            <div class="mdl-tooltip" for="btn-exit">Cerrar Sesión</div>
+                        </li>
+                        <li class="text-condensedLight noLink"><small>Soporte TI</small></li>
+                        <li class="noLink">
+                            <figure>
+                                <img src="assets/img/avatar-male.png" alt="Avatar">
+                            </figure>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <section class="full-width header-well">
+            <div class="full-width header-well-icon">
+                <i class="zmdi zmdi-wrench"></i>
+            </div>
+            <div class="full-width header-well-text">
+                <p class="text-condensedLight">
+                    <strong>Bitácora de Soporte y Mantenimiento:</strong> Registra servicios de mantenimiento preventivo y reparaciones correctivas para tu hardware. Lleva un historial detallado de incidencias y soluciones aplicadas antes de retornar los activos a stock disponible.
+                </p>
+            </div>
+        </section>
+
+        <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+            <div class="mdl-tabs__tab-bar">
+                <a href="#tabNewMaint" class="mdl-tabs__tab is-active">ENVIAR A SOPORTE</a>
+                <a href="#tabListMaint" class="mdl-tabs__tab" id="btn-list-tab">HISTORIAL TÉCNICO</a>
+            </div>
+
+            <!-- Registrar Soporte -->
+            <div class="mdl-tabs__panel is-active" id="tabNewMaint">
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--12-col">
+                        <div class="full-width panel">
+                            <div class="full-width panel-tittle text-center">
+                                Registrar Ingreso a Soporte / Mantenimiento
+                            </div>
+                            <div class="full-width panel-content">
+                                <form id="form-add-maint">
+                                    <div class="mdl-grid">
+                                        <div class="mdl-cell mdl-cell--12-col">
+                                            <legend class="text-condensedLight"><i class="zmdi zmdi-border-color"></i> &nbsp; DETALLES DEL INGRESO</legend>
+                                        </div>
+                                        
+                                        <div class="mdl-cell mdl-cell--6-col">
+                                            <label style="color: var(--text-secondary); font-size: 13px;">Seleccionar Activo Afectado</label>
+                                            <select class="mdl-textfield__input" id="selectAssetMaint" required>
+                                                <!-- Cargado dinámicamente (no dados de baja) -->
+                                            </select>
+                                        </div>
+
+                                        <div class="mdl-cell mdl-cell--6-col">
+                                            <label style="color: var(--text-secondary); font-size: 13px;">Tipo de Soporte</label>
+                                            <select class="mdl-textfield__input" id="typeMaint" required>
+                                                <option value="Preventivo">Mantenimiento Preventivo (Limpieza / Optimización)</option>
+                                                <option value="Correctivo">Mantenimiento Correctivo (Reparación de Falla)</option>
+                                                <option value="Garantía">Garantía del Proveedor (Falla de Fábrica)</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="mdl-cell mdl-cell--6-col">
+                                            <label style="color: var(--text-secondary); font-size: 13px; display: block; margin-top: 15px; margin-bottom: 5px;">Fecha de Ingreso</label>
+                                            <input class="mdl-textfield__input" type="date" id="startDateMaint" required>
+                                        </div>
+
+                                        <div class="mdl-cell mdl-cell--6-col">
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                <input class="mdl-textfield__input" type="text" id="techMaint" required>
+                                                <label class="mdl-textfield__label" for="techMaint">Técnico TI responsable / Empresa Soporte</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="mdl-cell mdl-cell--12-col">
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                <input class="mdl-textfield__input" type="text" id="descMaint" required>
+                                                <label class="mdl-textfield__label" for="descMaint">Descripción del problema / Falla reportada</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="text-center">
+                                        <button type="submit" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored bg-primary" id="btn-addMaint">
+                                            <i class="zmdi zmdi-plus"></i>
+                                        </button>
+                                        <div class="mdl-tooltip" for="btn-addMaint">Ingresar a Soporte</div>
+                                    </p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Historial Técnico -->
+            <div class="mdl-tabs__panel" id="tabListMaint">
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--12-col">
+                        <div class="full-width panel">
+                            <div class="full-width panel-tittle text-center">
+                                Historial de Incidencias y Mantenimiento
+                            </div>
+                            <div class="full-width panel-content">
+                                <div class="table-responsive">
+                                    <table class="mdl-data-table mdl-js-data-table full-width">
+                                        <thead>
+                                            <tr>
+                                                <th class="mdl-data-table__cell--non-numeric">Activo</th>
+                                                <th class="mdl-data-table__cell--non-numeric">Tipo</th>
+                                                <th class="mdl-data-table__cell--non-numeric">Falla / Motivo</th>
+                                                <th class="mdl-data-table__cell--non-numeric">Técnico</th>
+                                                <th class="mdl-data-table__cell--non-numeric">Fecha Ingreso</th>
+                                                <th class="mdl-data-table__cell--non-numeric">Fecha Salida</th>
+                                                <th class="mdl-data-table__cell--non-numeric">Estado Soporte</th>
+                                                <th class="mdl-data-table__cell--non-numeric">Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="table-maint-body">
+                                            <!-- Poblar dinámicamente -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        $(document).ready(function() {
+            function loadDropdowns() {
+                const assets = DB.getAssets();
+                const $selectAsset = $('#selectAssetMaint');
+                $selectAsset.empty();
+
+                // Cargar activos que no estén dados de baja
+                const activeAssets = assets.filter(a => a.status !== 'Dado de baja');
+
+                if(activeAssets.length === 0) {
+                    $selectAsset.append('<option value="">-- No hay activos en stock --</option>');
+                } else {
+                    activeAssets.forEach(a => {
+                        $selectAsset.append(`<option value="${a.id}">${a.code} - ${a.brand} ${a.model} [${a.status}]</option>`);
+                    });
+                }
+            }
+
+            function renderTable() {
+                const maintenance = DB.getMaintenance();
+                const assets = DB.getAssets();
+                const $tbody = $('#table-maint-body');
+                $tbody.empty();
+
+                if (maintenance.length === 0) {
+                    $tbody.append('<tr><td colspan="8" class="text-center text-secondary">No hay registros de soporte en el historial.</td></tr>');
+                    return;
+                }
+
+                // Mostrar primero los más recientes
+                const sorted = [...maintenance].reverse();
+
+                sorted.forEach(m => {
+                    const asset = assets.find(a => a.id === m.assetId);
+                    const assetCode = asset ? asset.code : 'N/A';
+                    const assetName = asset ? `${asset.brand} ${asset.model}` : 'Desconocido';
+
+                    let badgeClass = 'badge-maintenance';
+                    if (m.statusFinal === 'Completado') badgeClass = 'badge-available';
+
+                    let actionBtn = '-';
+                    if (m.statusFinal !== 'Completado') {
+                        actionBtn = `
+                            <button class="mdl-button mdl-button--raised btn-finalize-maint" data-id="${m.id}" data-assetid="${m.assetId}" style="background-color: var(--accent-cyan); color: var(--bg-dark); font-size: 11px; padding: 0 10px;">
+                                Finalizar
+                            </button>
+                        `;
+                    }
+
+                    $tbody.append(`
+                        <tr>
+                            <td class="mdl-data-table__cell--non-numeric"><strong>${assetCode}</strong><br><small>${assetName}</small></td>
+                            <td class="mdl-data-table__cell--non-numeric">${m.type}</td>
+                            <td class="mdl-data-table__cell--non-numeric">${m.description}</td>
+                            <td class="mdl-data-table__cell--non-numeric">${m.technician}</td>
+                            <td class="mdl-data-table__cell--non-numeric">${m.startDate}</td>
+                            <td class="mdl-data-table__cell--non-numeric">${m.endDate || 'En proceso'}</td>
+                            <td class="mdl-data-table__cell--non-numeric">
+                                <span class="badge ${badgeClass}">${m.statusFinal}</span>
+                            </td>
+                            <td class="mdl-data-table__cell--non-numeric">${actionBtn}</td>
+                        </tr>
+                    `);
+                });
+            }
+
+            // Inicializar vistas
+            loadDropdowns();
+            renderTable();
+
+            // Submit del formulario
+            $('#form-add-maint').on('submit', function(e) {
+                e.preventDefault();
+                const assetId = $('#selectAssetMaint').val();
+                if(!assetId) {
+                    swal('Error', 'Debe seleccionar un equipo válido.', 'error');
+                    return;
+                }
+
+                const newMaint = {
+                    assetId: assetId,
+                    type: $('#typeMaint').val(),
+                    startDate: $('#startDateMaint').val(),
+                    technician: $('#techMaint').val().trim(),
+                    description: $('#descMaint').val().trim(),
+                    endDate: '',
+                    statusFinal: 'En proceso'
+                };
+
+                DB.saveMaintenance(newMaint);
+                swal('¡Ingreso Registrado!', 'El activo ha sido puesto en estado "En mantenimiento".', 'success');
+                
+                this.reset();
+                loadDropdowns();
+                renderTable();
+
+                $('#btn-list-tab').click();
+            });
+
+            // Finalizar mantenimiento (Modal popup interactivo con SweetAlert2)
+            $(document).on('click', '.btn-finalize-maint', function() {
+                const maintId = $(this).data('id').toString();
+                const assetId = $(this).data('assetid').toString();
+
+                swal({
+                    title: 'Finalizar Mantenimiento',
+                    text: 'Escribe la solución técnica aplicada (ej: Cambio de disco duro, limpieza interna):',
+                    type: 'input',
+                    showCancelButton: true,
+                    closeOnConfirm: false,
+                    inputPlaceholder: 'Solución aplicada...'
+                }, function(inputValue) {
+                    if (inputValue === false) return false;
+                    const solution = inputValue.trim() || 'Mantenimiento preventivo completado';
+                    
+                    // Segundo diálogo para elegir estado final del equipo
+                    swal({
+                        title: 'Estado del Equipo',
+                        text: '¿En qué estado queda el activo al salir de soporte?',
+                        type: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Disponible (Operativo)',
+                        cancelButtonText: 'Dado de baja (Dañado)',
+                        closeOnConfirm: true
+                    }, function(isConfirm) {
+                        const finalStatus = isConfirm ? 'Disponible' : 'Dado de baja';
+                        const now = new Date();
+                        const formattedDate = now.toISOString().slice(0, 10);
+
+                        DB.finalizeMaintenance(maintId, formattedDate, finalStatus, solution);
+                        
+                        swal('¡Finalizado!', `Se completó la orden. El equipo ahora se encuentra: ${finalStatus}.`, 'success');
+                        
+                        loadDropdowns();
+                        renderTable();
+                    });
+                });
+            });
+
+            // Recargar vista al cambiar de pestaña
+            $('#btn-list-tab').on('click', function() {
+                renderTable();
+            });
+        });
+    </script>
+</body>
+</html>

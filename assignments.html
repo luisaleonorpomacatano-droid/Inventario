@@ -1,0 +1,537 @@
+<!-- 
+* SCTA - Sistema de Control de Activos Tecnológicos
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Asignaciones TI | SCTA</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/sweetalert2.css">
+    <link rel="stylesheet" href="css/material.min.css">
+    <link rel="stylesheet" href="css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/material.min.js" ></script>
+    <script src="js/sweetalert2.min.js" ></script>
+    <script src="js/jquery.mCustomScrollbar.concat.min.js" ></script>
+    <script src="js/db.js" ></script>
+    <script src="js/main.js" ></script>
+    <style>
+        /* Print layout for Acta de Entrega */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #print-area, #print-area * {
+                visibility: visible;
+            }
+            #print-area {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                color: #000 !important;
+                background: #fff !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+        }
+        
+        .acta-preview {
+            background-color: var(--bg-surface);
+            border: 1px dashed var(--accent-cyan);
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 20px;
+            color: var(--text-primary);
+        }
+        .acta-title {
+            color: var(--accent-cyan);
+            font-family: var(--font-heading);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Notifications area -->
+    <section class="full-width container-notifications">
+        <div class="full-width container-notifications-bg btn-Notification"></div>
+        <section class="NotificationArea">
+            <div class="full-width NotificationArea-title">Notificaciones <i class="zmdi zmdi-close btn-Notification"></i></div>
+            <a href="#" class="Notification" id="notifation-1">
+                <div class="Notification-icon"><i class="zmdi zmdi-alert-triangle" style="color: var(--accent-amber);"></i></div>
+                <div class="Notification-text">
+                    <p><strong>Garantías por vencer</strong><br>Hay 2 equipos cuya garantía expira este mes.</p>
+                    <small>Hace 5 minutos</small>
+                </div>
+            </a>
+        </section>
+    </section>
+
+    <!-- navLateral -->
+    <section class="full-width navLateral">
+        <div class="full-width navLateral-bg btn-menu"></div>
+        <div class="full-width navLateral-body">
+            <div class="full-width navLateral-body-logo tittles">
+                <i class="zmdi zmdi-close btn-menu"></i> SCTA TI
+            </div>
+            <figure class="full-width navLateral-body-tittle-menu">
+                <div>
+                    <img src="assets/img/avatar-male.png" alt="Avatar" class="img-responsive">
+                </div>
+                <figcaption>
+                    <span>Soporte TI Admin</span>
+                    <small>Administrador</small>
+                </figcaption>
+            </figure>
+            <nav class="full-width">
+                <ul class="full-width list-unstyle menu-principal">
+                    <li class="full-width">
+                        <a href="home.html" class="full-width">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-view-dashboard"></i></div>
+                            <div class="navLateral-body-cr">DASHBOARD</div>
+                        </a>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="#!" class="full-width btn-subMenu">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-case"></i></div>
+                            <div class="navLateral-body-cr">ADMINISTRACIÓN</div>
+                            <span class="zmdi zmdi-chevron-left"></span>
+                        </a>
+                        <ul class="full-width menu-principal sub-menu-options">
+                            <li class="full-width">
+                                <a href="providers.html" class="full-width">
+                                    <div class="navLateral-body-cl"><i class="zmdi zmdi-truck"></i></div>
+                                    <div class="navLateral-body-cr">PROVEEDORES</div>
+                                </a>
+                            </li>
+                            <li class="full-width">
+                                <a href="categories.html" class="full-width">
+                                    <div class="navLateral-body-cl"><i class="zmdi zmdi-label"></i></div>
+                                    <div class="navLateral-body-cr">CATEGORÍAS</div>
+                                </a>
+                            </li>
+                            <li class="full-width">
+                                <a href="warranties.html" class="full-width">
+                                    <div class="navLateral-body-cl"><i class="zmdi zmdi-shield-security"></i></div>
+                                    <div class="navLateral-body-cr">GARANTÍAS</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="#!" class="full-width btn-subMenu">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-accounts"></i></div>
+                            <div class="navLateral-body-cr">USUARIOS TI</div>
+                            <span class="zmdi zmdi-chevron-left"></span>
+                        </a>
+                        <ul class="full-width menu-principal sub-menu-options">
+                            <li class="full-width">
+                                <a href="admin.html" class="full-width">
+                                    <div class="navLateral-body-cl"><i class="zmdi zmdi-account"></i></div>
+                                    <div class="navLateral-body-cr">SOPORTE TI</div>
+                                </a>
+                            </li>
+                            <li class="full-width">
+                                <a href="employees.html" class="full-width">
+                                    <div class="navLateral-body-cl"><i class="zmdi zmdi-accounts-list"></i></div>
+                                    <div class="navLateral-body-cr">COLABORADORES</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="assets.html" class="full-width">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-laptop-mac"></i></div>
+                            <div class="navLateral-body-cr">ACTIVOS TECNOLÓGICOS</div>
+                        </a>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="assignments.html" class="full-width active-link">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-assignment-returned"></i></div>
+                            <div class="navLateral-body-cr">ASIGNACIONES</div>
+                        </a>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="requests.html" class="full-width">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-comment-list"></i></div>
+                            <div class="navLateral-body-cr">SOLICITUDES</div>
+                        </a>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="maintenance.html" class="full-width">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-wrench"></i></div>
+                            <div class="navLateral-body-cr">MANTENIMIENTO</div>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <!-- pageContent -->
+    <section class="full-width pageContent">
+        <!-- navBar -->
+        <div class="full-width navBar">
+            <div class="full-width navBar-options">
+                <i class="zmdi zmdi-swap btn-menu" id="btn-menu"></i>
+                <div class="mdl-tooltip" for="btn-menu">Ocultar / Mostrar Menú</div>
+                <nav class="navBar-options-list">
+                    <ul class="list-unstyle">
+                        <li class="btn-Notification" id="notifications">
+                            <i class="zmdi zmdi-notifications"></i>
+                            <div class="mdl-tooltip" for="notifications">Notificaciones</div>
+                        </li>
+                        <li class="btn-exit" id="btn-exit">
+                            <i class="zmdi zmdi-power"></i>
+                            <div class="mdl-tooltip" for="btn-exit">Cerrar Sesión</div>
+                        </li>
+                        <li class="text-condensedLight noLink"><small>Soporte TI</small></li>
+                        <li class="noLink">
+                            <figure>
+                                <img src="assets/img/avatar-male.png" alt="Avatar">
+                            </figure>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <section class="full-width header-well">
+            <div class="full-width header-well-icon">
+                <i class="zmdi zmdi-assignment-returned"></i>
+            </div>
+            <div class="full-width header-well-text">
+                <p class="text-condensedLight">
+                    <strong>Asignación de Equipos:</strong> Registra la entrega de activos disponibles a los colaboradores de la empresa. El sistema cambia el estado del hardware a "Asignado" y genera automáticamente el Acta de Conformidad y Responsabilidad para firmas.
+                </p>
+            </div>
+        </section>
+
+        <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+            <div class="mdl-tabs__tab-bar">
+                <a href="#tabNewAssignment" class="mdl-tabs__tab is-active">ENTREGAR EQUIPO</a>
+                <a href="#tabListAssignments" class="mdl-tabs__tab" id="btn-list-tab">ASIGNACIONES ACTIVAS</a>
+            </div>
+
+            <!-- Entregar Equipo -->
+            <div class="mdl-tabs__panel is-active" id="tabNewAssignment">
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--12-col">
+                        <div class="full-width panel">
+                            <div class="full-width panel-tittle text-center">
+                                Registrar Entrega de Activo TI
+                            </div>
+                            <div class="full-width panel-content">
+                                <form id="form-add-assignment">
+                                    <div class="mdl-grid">
+                                        <div class="mdl-cell mdl-cell--12-col">
+                                            <legend class="text-condensedLight"><i class="zmdi zmdi-border-color"></i> &nbsp; DETALLES DE ASIGNACIÓN</legend>
+                                        </div>
+                                        
+                                        <div class="mdl-cell mdl-cell--6-col">
+                                            <label style="color: var(--text-secondary); font-size: 13px;">Seleccionar Activo Disponible</label>
+                                            <select class="mdl-textfield__input" id="selectAsset" required>
+                                                <!-- Cargado dinámicamente -->
+                                            </select>
+                                        </div>
+
+                                        <div class="mdl-cell mdl-cell--6-col">
+                                            <label style="color: var(--text-secondary); font-size: 13px;">Seleccionar Colaborador Responsable</label>
+                                            <select class="mdl-textfield__input" id="selectEmployee" required>
+                                                <!-- Cargado dinámicamente -->
+                                            </select>
+                                        </div>
+
+                                        <div class="mdl-cell mdl-cell--6-col">
+                                            <label style="color: var(--text-secondary); font-size: 13px; display: block; margin-top: 15px; margin-bottom: 5px;">Fecha de Entrega</label>
+                                            <input class="mdl-textfield__input" type="date" id="dateAssignment" required>
+                                        </div>
+
+                                        <div class="mdl-cell mdl-cell--6-col">
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                <input class="mdl-textfield__input" type="text" id="docRefAssignment">
+                                                <label class="mdl-textfield__label" for="docRefAssignment">Nro. de Acta Manual (Opcional - Autogenerado)</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="mdl-cell mdl-cell--12-col">
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                <input class="mdl-textfield__input" type="text" id="obsAssignment">
+                                                <label class="mdl-textfield__label" for="obsAssignment">Términos de entrega / Observaciones de hardware</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="text-center">
+                                        <button type="submit" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored bg-primary" id="btn-addAssignment">
+                                            <i class="zmdi zmdi-plus"></i>
+                                        </button>
+                                        <div class="mdl-tooltip" for="btn-addAssignment">Asignar Equipo</div>
+                                    </p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Listado de Asignaciones Activas -->
+            <div class="mdl-tabs__panel" id="tabListAssignments">
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--12-col">
+                        <div class="full-width panel">
+                            <div class="full-width panel-tittle text-center">
+                                Equipos Tecnológicos en Custodia
+                            </div>
+                            <div class="full-width panel-content">
+                                <div class="table-responsive">
+                                    <table class="mdl-data-table mdl-js-data-table full-width">
+                                        <thead>
+                                            <tr>
+                                                <th class="mdl-data-table__cell--non-numeric">Nro. Acta</th>
+                                                <th class="mdl-data-table__cell--non-numeric">Código</th>
+                                                <th class="mdl-data-table__cell--non-numeric">Activo</th>
+                                                <th class="mdl-data-table__cell--non-numeric">Colaborador</th>
+                                                <th class="mdl-data-table__cell--non-numeric">Área</th>
+                                                <th class="mdl-data-table__cell--non-numeric">Fecha Entrega</th>
+                                                <th class="mdl-data-table__cell--non-numeric">Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="table-assignments-body">
+                                            <!-- Poblar dinámicamente -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Acta de Entrega / Conformidad (Para imprimir) -->
+    <div id="print-area" style="display:none; padding: 40px; font-family: sans-serif; color: #000; line-height: 1.6;">
+        <!-- Se rellenará dinámicamente antes de imprimir -->
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            function loadDropdowns() {
+                const assets = DB.getAssets();
+                const employees = DB.getEmployees();
+
+                // Filtrar solo activos disponibles
+                const availableAssets = assets.filter(a => a.status === 'Disponible');
+
+                const $selectAsset = $('#selectAsset');
+                $selectAsset.empty();
+                if(availableAssets.length === 0) {
+                    $selectAsset.append('<option value="">-- No hay equipos disponibles --</option>');
+                } else {
+                    availableAssets.forEach(a => {
+                        $selectAsset.append(`<option value="${a.id}">${a.code} - ${a.brand} ${a.model} (${a.type})</option>`);
+                    });
+                }
+
+                const $selectEmployee = $('#selectEmployee');
+                $selectEmployee.empty();
+                employees.forEach(e => {
+                    $selectEmployee.append(`<option value="${e.id}">${e.name} ${e.lastname} [${e.area}]</option>`);
+                });
+            }
+
+            function renderTable() {
+                const assignments = DB.getAssignments();
+                const assets = DB.getAssets();
+                const employees = DB.getEmployees();
+                const $tbody = $('#table-assignments-body');
+                $tbody.empty();
+
+                const activeAssignments = assignments.filter(asg => asg.status === 'Activa');
+
+                if (activeAssignments.length === 0) {
+                    $tbody.append('<tr><td colspan="7" class="text-center text-secondary">No hay asignaciones activas de equipos.</td></tr>');
+                    return;
+                }
+
+                activeAssignments.forEach(asg => {
+                    const asset = assets.find(a => a.id === asg.assetId);
+                    const emp = employees.find(e => e.id === asg.employeeId);
+
+                    const assetCode = asset ? asset.code : 'N/A';
+                    const assetDesc = asset ? `${asset.brand} ${asset.model}` : 'Desconocido';
+                    const empName = emp ? `${emp.name} ${emp.lastname}` : 'Desconocido';
+                    const area = emp ? emp.area : 'N/A';
+
+                    $tbody.append(`
+                        <tr>
+                            <td class="mdl-data-table__cell--non-numeric"><strong>${asg.docRef}</strong></td>
+                            <td class="mdl-data-table__cell--non-numeric">${assetCode}</td>
+                            <td class="mdl-data-table__cell--non-numeric">${assetDesc}</td>
+                            <td class="mdl-data-table__cell--non-numeric">${empName}</td>
+                            <td class="mdl-data-table__cell--non-numeric">${area}</td>
+                            <td class="mdl-data-table__cell--non-numeric">${asg.date}</td>
+                            <td class="mdl-data-table__cell--non-numeric">
+                                <button class="mdl-button mdl-button--icon btn-print-acta" data-id="${asg.id}" style="color: var(--accent-cyan);" title="Imprimir Acta">
+                                    <i class="zmdi zmdi-print"></i>
+                                </button>
+                                <button class="mdl-button mdl-button--icon btn-devolution" data-assetid="${asg.assetId}" data-id="${asg.id}" style="color: var(--accent-amber);" title="Devolver Equipo">
+                                    <i class="zmdi zmdi-assignment-return"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    `);
+                });
+            }
+
+            // Inicializar vistas
+            loadDropdowns();
+            renderTable();
+
+            // Submit de Asignación
+            $('#form-add-assignment').on('submit', function(e) {
+                e.preventDefault();
+                const assetId = $('#selectAsset').val();
+                if(!assetId) {
+                    swal('Error', 'Debe seleccionar un equipo disponible.', 'error');
+                    return;
+                }
+                const employeeId = $('#selectEmployee').val();
+                const date = $('#dateAssignment').val();
+                let docRef = $('#docRefAssignment').val().trim();
+                
+                if(!docRef) {
+                    docRef = `ACTA-TI-${Date.now().toString().slice(-6)}`;
+                }
+
+                const newAsg = {
+                    assetId: assetId,
+                    employeeId: employeeId,
+                    date: date,
+                    status: 'Activa',
+                    observations: $('#obsAssignment').val().trim(),
+                    docRef: docRef
+                };
+
+                DB.saveAssignment(newAsg);
+                swal('¡Equipo Asignado!', `Se registró el acta ${docRef} y se cambió el estado del equipo a Asignado.`, 'success');
+                
+                this.reset();
+                loadDropdowns();
+                renderTable();
+                
+                // Ir a la pestaña listado
+                $('#btn-list-tab').click();
+            });
+
+            // Imprimir Acta de Entrega
+            $(document).on('click', '.btn-print-acta', function() {
+                const asgId = $(this).data('id');
+                const assignments = DB.getAssignments();
+                const asg = assignments.find(a => a.id === asgId.toString());
+
+                if (asg) {
+                    const asset = DB.getAssets().find(a => a.id === asg.assetId);
+                    const emp = DB.getEmployees().find(e => e.id === asg.employeeId);
+                    const prov = DB.getProviders().find(p => p.id === (asset ? asset.providerId : ''));
+
+                    const printArea = $('#print-area');
+                    printArea.html(`
+                        <div style="border: 2px solid #000; padding: 20px;">
+                            <h2 style="text-align: center; text-transform: uppercase;">Acta de Entrega e Inventario de Activos Tecnológicos</h2>
+                            <h4 style="text-align: center; color: #555;">REF: ${asg.docRef}</h4>
+                            <hr>
+                            <p>Por medio del presente documento, se hace entrega formal del activo tecnológico descrito a continuación bajo la responsabilidad del colaborador firmante, de acuerdo a las políticas de TI de la empresa.</p>
+                            
+                            <h3>1. Datos del Colaborador (Responsable)</h3>
+                            <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                                <tr><td style="width: 30%; font-weight: bold; border: 1px solid #ccc; padding: 8px;">Nombres y Apellidos:</td><td style="border: 1px solid #ccc; padding: 8px;">${emp ? emp.name + ' ' + emp.lastname : 'Desconocido'}</td></tr>
+                                <tr><td style="font-weight: bold; border: 1px solid #ccc; padding: 8px;">DNI:</td><td style="border: 1px solid #ccc; padding: 8px;">${emp ? emp.dni : 'N/A'}</td></tr>
+                                <tr><td style="font-weight: bold; border: 1px solid #ccc; padding: 8px;">Área / Departamento:</td><td style="border: 1px solid #ccc; padding: 8px;">${emp ? emp.area : 'N/A'}</td></tr>
+                                <tr><td style="font-weight: bold; border: 1px solid #ccc; padding: 8px;">Sede Física:</td><td style="border: 1px solid #ccc; padding: 8px;">${emp ? emp.location : 'N/A'}</td></tr>
+                            </table>
+
+                            <h3>2. Datos del Activo Tecnológico</h3>
+                            <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                                <tr><td style="width: 30%; font-weight: bold; border: 1px solid #ccc; padding: 8px;">Código Patrimonial:</td><td style="border: 1px solid #ccc; padding: 8px;">${asset ? asset.code : 'N/A'}</td></tr>
+                                <tr><td style="font-weight: bold; border: 1px solid #ccc; padding: 8px;">Tipo de Activo:</td><td style="border: 1px solid #ccc; padding: 8px;">${asset ? asset.type : 'N/A'}</td></tr>
+                                <tr><td style="font-weight: bold; border: 1px solid #ccc; padding: 8px;">Marca / Modelo:</td><td style="border: 1px solid #ccc; padding: 8px;">${asset ? asset.brand + ' ' + asset.model : 'N/A'}</td></tr>
+                                <tr><td style="font-weight: bold; border: 1px solid #ccc; padding: 8px;">Número de Serie:</td><td style="border: 1px solid #ccc; padding: 8px;">${asset ? asset.serie : 'N/A'}</td></tr>
+                                <tr><td style="font-weight: bold; border: 1px solid #ccc; padding: 8px;">Garantía de Compra:</td><td style="border: 1px solid #ccc; padding: 8px;">${asset ? asset.warrantyMonths + ' meses' : 'N/A'}</td></tr>
+                            </table>
+
+                            <h3>3. Condiciones de Entrega</h3>
+                            <p><strong>Fecha de Asignación:</strong> ${asg.date}</p>
+                            <p><strong>Observaciones y Accesorios:</strong> ${asg.observations || 'Ninguna. El equipo se entrega operativo y en buen estado físico.'}</p>
+                            
+                            <p style="margin-top: 40px;">El colaborador declara recibir a entera conformidad el equipo antes descrito y se compromete a velar por su cuidado, buen uso exclusivo de labores de la empresa, y la devolución del mismo en caso de desvinculación laboral o requerimiento de renovación por TI.</p>
+                            
+                            <div style="display: flex; justify-content: space-between; margin-top: 80px;">
+                                <div style="width: 40%; text-align: center; border-top: 1px solid #000; padding-top: 5px;">
+                                    Firma de TI (Entregado por)
+                                </div>
+                                <div style="width: 40%; text-align: center; border-top: 1px solid #000; padding-top: 5px;">
+                                    Firma de Colaborador (Responsable)
+                                </div>
+                            </div>
+                        </div>
+                    `);
+                    
+                    window.print();
+                }
+            });
+
+            // Registrar Devolución de Activo
+            $(document).on('click', '.btn-devolution', function() {
+                const assetId = $(this).data('assetid').toString();
+                const asgId = $(this).data('id').toString();
+
+                swal({
+                    title: 'Registrar Devolución',
+                    text: 'Escribe las observaciones del estado físico del equipo al retornar:',
+                    type: 'input',
+                    showCancelButton: true,
+                    closeOnConfirm: false,
+                    inputPlaceholder: 'Ej: Pantalla en perfecto estado, cargador original devuelto'
+                }, function(inputValue) {
+                    if (inputValue === false) return false;
+                    
+                    const notes = inputValue.trim() || 'Devolución sin observaciones';
+                    const now = new Date();
+                    const formattedDate = now.toISOString().slice(0, 10);
+
+                    // Devolver el activo como Disponible
+                    DB.releaseAsset(assetId, {
+                        date: formattedDate,
+                        status: 'Disponible',
+                        notes: notes
+                    });
+
+                    swal('¡Devuelto!', 'El equipo tecnológico se ha registrado como devuelto y vuelve a estar Disponible para asignación.', 'success');
+                    
+                    loadDropdowns();
+                    renderTable();
+                });
+            });
+
+            // Recargar al hacer clic en pestaña
+            $('#btn-list-tab').on('click', function() {
+                renderTable();
+            });
+        });
+    </script>
+</body>
+</html>

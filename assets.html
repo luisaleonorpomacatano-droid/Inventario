@@ -1,0 +1,526 @@
+<!-- 
+* SCTA - Sistema de Control de Activos Tecnológicos
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Activos TI | SCTA</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/sweetalert2.css">
+    <link rel="stylesheet" href="css/material.min.css">
+    <link rel="stylesheet" href="css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/material.min.js" ></script>
+    <script src="js/sweetalert2.min.js" ></script>
+    <script src="js/jquery.mCustomScrollbar.concat.min.js" ></script>
+    <script src="js/db.js" ></script>
+    <script src="js/main.js" ></script>
+</head>
+<body>
+    <!-- Notifications area -->
+    <section class="full-width container-notifications">
+        <div class="full-width container-notifications-bg btn-Notification"></div>
+        <section class="NotificationArea">
+            <div class="full-width NotificationArea-title">Notificaciones <i class="zmdi zmdi-close btn-Notification"></i></div>
+            <a href="#" class="Notification" id="notifation-1">
+                <div class="Notification-icon"><i class="zmdi zmdi-alert-triangle" style="color: var(--accent-amber);"></i></div>
+                <div class="Notification-text">
+                    <p><strong>Garantías por vencer</strong><br>Hay 2 equipos cuya garantía expira este mes.</p>
+                    <small>Hace 5 minutos</small>
+                </div>
+            </a>
+        </section>
+    </section>
+
+    <!-- navLateral -->
+    <section class="full-width navLateral">
+        <div class="full-width navLateral-bg btn-menu"></div>
+        <div class="full-width navLateral-body">
+            <div class="full-width navLateral-body-logo tittles">
+                <i class="zmdi zmdi-close btn-menu"></i> SCTA TI
+            </div>
+            <figure class="full-width navLateral-body-tittle-menu">
+                <div>
+                    <img src="assets/img/avatar-male.png" alt="Avatar" class="img-responsive">
+                </div>
+                <figcaption>
+                    <span>Soporte TI Admin</span>
+                    <small>Administrador</small>
+                </figcaption>
+            </figure>
+            <nav class="full-width">
+                <ul class="full-width list-unstyle menu-principal">
+                    <li class="full-width">
+                        <a href="home.html" class="full-width">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-view-dashboard"></i></div>
+                            <div class="navLateral-body-cr">DASHBOARD</div>
+                        </a>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="#!" class="full-width btn-subMenu">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-case"></i></div>
+                            <div class="navLateral-body-cr">ADMINISTRACIÓN</div>
+                            <span class="zmdi zmdi-chevron-left"></span>
+                        </a>
+                        <ul class="full-width menu-principal sub-menu-options">
+                            <li class="full-width">
+                                <a href="providers.html" class="full-width">
+                                    <div class="navLateral-body-cl"><i class="zmdi zmdi-truck"></i></div>
+                                    <div class="navLateral-body-cr">PROVEEDORES</div>
+                                </a>
+                            </li>
+                            <li class="full-width">
+                                <a href="categories.html" class="full-width">
+                                    <div class="navLateral-body-cl"><i class="zmdi zmdi-label"></i></div>
+                                    <div class="navLateral-body-cr">CATEGORÍAS</div>
+                                </a>
+                            </li>
+                            <li class="full-width">
+                                <a href="warranties.html" class="full-width">
+                                    <div class="navLateral-body-cl"><i class="zmdi zmdi-shield-security"></i></div>
+                                    <div class="navLateral-body-cr">GARANTÍAS</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="#!" class="full-width btn-subMenu">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-accounts"></i></div>
+                            <div class="navLateral-body-cr">USUARIOS TI</div>
+                            <span class="zmdi zmdi-chevron-left"></span>
+                        </a>
+                        <ul class="full-width menu-principal sub-menu-options">
+                            <li class="full-width">
+                                <a href="admin.html" class="full-width">
+                                    <div class="navLateral-body-cl"><i class="zmdi zmdi-account"></i></div>
+                                    <div class="navLateral-body-cr">SOPORTE TI</div>
+                                </a>
+                            </li>
+                            <li class="full-width">
+                                <a href="employees.html" class="full-width">
+                                    <div class="navLateral-body-cl"><i class="zmdi zmdi-accounts-list"></i></div>
+                                    <div class="navLateral-body-cr">COLABORADORES</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="assets.html" class="full-width active-link">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-laptop-mac"></i></div>
+                            <div class="navLateral-body-cr">ACTIVOS TECNOLÓGICOS</div>
+                        </a>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="assignments.html" class="full-width">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-assignment-returned"></i></div>
+                            <div class="navLateral-body-cr">ASIGNACIONES</div>
+                        </a>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="requests.html" class="full-width">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-comment-list"></i></div>
+                            <div class="navLateral-body-cr">SOLICITUDES</div>
+                        </a>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="maintenance.html" class="full-width">
+                            <div class="navLateral-body-cl"><i class="zmdi zmdi-wrench"></i></div>
+                            <div class="navLateral-body-cr">MANTENIMIENTO</div>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <!-- pageContent -->
+    <section class="full-width pageContent">
+        <!-- navBar -->
+        <div class="full-width navBar">
+            <div class="full-width navBar-options">
+                <i class="zmdi zmdi-swap btn-menu" id="btn-menu"></i>
+                <div class="mdl-tooltip" for="btn-menu">Ocultar / Mostrar Menú</div>
+                <nav class="navBar-options-list">
+                    <ul class="list-unstyle">
+                        <li class="btn-Notification" id="notifications">
+                            <i class="zmdi zmdi-notifications"></i>
+                            <div class="mdl-tooltip" for="notifications">Notificaciones</div>
+                        </li>
+                        <li class="btn-exit" id="btn-exit">
+                            <i class="zmdi zmdi-power"></i>
+                            <div class="mdl-tooltip" for="btn-exit">Cerrar Sesión</div>
+                        </li>
+                        <li class="text-condensedLight noLink"><small>Soporte TI</small></li>
+                        <li class="noLink">
+                            <figure>
+                                <img src="assets/img/avatar-male.png" alt="Avatar">
+                            </figure>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <section class="full-width header-well">
+            <div class="full-width header-well-icon">
+                <i class="zmdi zmdi-laptop-mac"></i>
+            </div>
+            <div class="full-width header-well-text">
+                <p class="text-condensedLight">
+                    <strong>Gestión de Activos Tecnológicos:</strong> Registra y audita el equipamiento informático de la empresa. Puedes catalogar computadoras, servidores, periféricos y accesorios, controlando su estado de operación y su trazabilidad.
+                </p>
+            </div>
+        </section>
+
+        <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+            <div class="mdl-tabs__tab-bar">
+                <a href="#tabNewAsset" class="mdl-tabs__tab is-active">NUEVO ACTIVO</a>
+                <a href="#tabListAssets" class="mdl-tabs__tab" id="btn-list-tab">INVENTARIO</a>
+            </div>
+
+            <!-- Formulario de Nuevo Activo -->
+            <div class="mdl-tabs__panel is-active" id="tabNewAsset">
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--12-col">
+                        <div class="full-width panel">
+                            <div class="full-width panel-tittle text-center">
+                                Registrar Activo Tecnológico
+                            </div>
+                            <div class="full-width panel-content">
+                                <form id="form-add-asset">
+                                    <div class="mdl-grid">
+                                        <div class="mdl-cell mdl-cell--12-col">
+                                            <legend class="text-condensedLight"><i class="zmdi zmdi-border-color"></i> &nbsp; ESPECIFICACIONES TÉCNICAS</legend>
+                                        </div>
+                                        
+                                        <div class="mdl-cell mdl-cell--6-col">
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                <input class="mdl-textfield__input" type="text" id="codeAsset" required>
+                                                <label class="mdl-textfield__label" for="codeAsset">Código Patrimonial / Activo (ej. LAP-004)</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="mdl-cell mdl-cell--6-col">
+                                            <label style="color: var(--text-secondary); font-size: 13px;">Tipo de Activo</label>
+                                            <select class="mdl-textfield__input" id="typeAsset" required>
+                                                <!-- Cargado dinámicamente -->
+                                            </select>
+                                        </div>
+
+                                        <div class="mdl-cell mdl-cell--6-col">
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                <input class="mdl-textfield__input" type="text" id="brandAsset" required>
+                                                <label class="mdl-textfield__label" for="brandAsset">Marca</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="mdl-cell mdl-cell--6-col">
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                <input class="mdl-textfield__input" type="text" id="modelAsset" required>
+                                                <label class="mdl-textfield__label" for="modelAsset">Modelo</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="mdl-cell mdl-cell--6-col">
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                <input class="mdl-textfield__input" type="text" id="serieAsset" required>
+                                                <label class="mdl-textfield__label" for="serieAsset">Número de Serie</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="mdl-cell mdl-cell--6-col">
+                                            <label style="color: var(--text-secondary); font-size: 13px;">Proveedor</label>
+                                            <select class="mdl-textfield__input" id="providerAsset" required>
+                                                <!-- Cargado dinámicamente -->
+                                            </select>
+                                        </div>
+
+                                        <div class="mdl-cell mdl-cell--12-col">
+                                            <legend class="text-condensedLight"><i class="zmdi zmdi-calendar"></i> &nbsp; FECHAS, GARANTÍA Y UBICACIÓN</legend>
+                                        </div>
+
+                                        <div class="mdl-cell mdl-cell--4-col">
+                                            <label style="color: var(--text-secondary); font-size: 13px; display: block; margin-bottom: 5px;">Fecha de Compra</label>
+                                            <input class="mdl-textfield__input" type="date" id="purchaseDateAsset" required>
+                                        </div>
+
+                                        <div class="mdl-cell mdl-cell--4-col">
+                                            <label style="color: var(--text-secondary); font-size: 13px;">Duración de Garantía</label>
+                                            <select class="mdl-textfield__input" id="warrantyAsset" required>
+                                                <option value="12">12 meses (1 año)</option>
+                                                <option value="24">24 meses (2 años)</option>
+                                                <option value="36">36 meses (3 años)</option>
+                                                <option value="48">48 meses (4 años)</option>
+                                                <option value="60">60 meses (5 años)</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="mdl-cell mdl-cell--4-col">
+                                            <label style="color: var(--text-secondary); font-size: 13px;">Ubicación Inicial</label>
+                                            <select class="mdl-textfield__input" id="locationAsset" required>
+                                                <option value="Oficina San Borja">Oficina San Borja</option>
+                                                <option value="Oficina Miraflores">Oficina Miraflores</option>
+                                                <option value="Almacén Principal">Almacén Principal</option>
+                                                <option value="Centro de Datos">Centro de Datos</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="mdl-cell mdl-cell--12-col">
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                <input class="mdl-textfield__input" type="text" id="observationsAsset">
+                                                <label class="mdl-textfield__label" for="observationsAsset">Observaciones / Detalles adicionales</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="text-center">
+                                        <button type="submit" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored bg-primary" id="btn-addAsset">
+                                            <i class="zmdi zmdi-plus"></i>
+                                        </button>
+                                        <div class="mdl-tooltip" for="btn-addAsset">Agregar Activo</div>
+                                    </p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Listado de Activos -->
+            <div class="mdl-tabs__panel" id="tabListAssets">
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--12-col">
+                        <div class="full-width panel">
+                            <div class="full-width panel-tittle text-center">
+                                Listado de Activos Tecnológicos
+                            </div>
+                            <div class="full-width panel-content">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                                    <form action="#" style="width: 300px; margin: 0;">
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable" style="padding: 0;">
+                                            <label class="mdl-button mdl-js-button mdl-button--icon" for="searchAsset">
+                                                <i class="zmdi zmdi-search"></i>
+                                            </label>
+                                            <div class="mdl-textfield__expandable-holder" style="max-width: 100%;">
+                                                <input class="mdl-textfield__input" type="text" id="searchAsset" placeholder="Buscar por código, marca, modelo o serie...">
+                                                <label class="mdl-textfield__label"></label>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <div>
+                                        <label style="color: var(--text-secondary); font-size: 13px; margin-right: 10px;">Filtrar por Estado:</label>
+                                        <select class="mdl-textfield__input" id="filterStatus" style="display: inline-block; width: 180px; margin: 0; padding: 5px;">
+                                            <option value="TODOS">Todos los estados</option>
+                                            <option value="Disponible">Disponible</option>
+                                            <option value="Asignado">Asignado</option>
+                                            <option value="En mantenimiento">En mantenimiento</option>
+                                            <option value="Dado de baja">Dado de baja</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="table-responsive">
+                                    <table class="mdl-data-table mdl-js-data-table full-width">
+                                        <thead>
+                                            <tr>
+                                                <th class="mdl-data-table__cell--non-numeric">Código</th>
+                                                <th class="mdl-data-table__cell--non-numeric">Tipo</th>
+                                                <th class="mdl-data-table__cell--non-numeric">Modelo / Marca</th>
+                                                <th class="mdl-data-table__cell--non-numeric">N° Serie</th>
+                                                <th class="mdl-data-table__cell--non-numeric">Estado</th>
+                                                <th class="mdl-data-table__cell--non-numeric">Responsable</th>
+                                                <th class="mdl-data-table__cell--non-numeric">Ubicación</th>
+                                                <th class="mdl-data-table__cell--non-numeric">Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="table-assets-body">
+                                            <!-- Poblar dinámicamente -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        $(document).ready(function() {
+            // Cargar datos en dropdowns
+            function loadDropdowns() {
+                const categories = DB.getCategories();
+                const providers = DB.getProviders();
+
+                const $typeAsset = $('#typeAsset');
+                $typeAsset.empty();
+                categories.forEach(c => {
+                    $typeAsset.append(`<option value="${c.name}">${c.name}</option>`);
+                });
+
+                const $providerAsset = $('#providerAsset');
+                $providerAsset.empty();
+                providers.forEach(p => {
+                    $providerAsset.append(`<option value="${p.id}">${p.name}</option>`);
+                });
+            }
+
+            // Renderizar la tabla de activos
+            function renderTable(filterQuery = '', statusFilter = 'TODOS') {
+                const assets = DB.getAssets();
+                const employees = DB.getEmployees();
+                const $tbody = $('#table-assets-body');
+                $tbody.empty();
+
+                const query = filterQuery.toLowerCase().trim();
+
+                const filtered = assets.filter(a => {
+                    // Filtro de estado
+                    if (statusFilter !== 'TODOS' && a.status !== statusFilter) {
+                        return false;
+                    }
+                    // Filtro de búsqueda texto
+                    if (query !== '') {
+                        const code = a.code.toLowerCase();
+                        const type = a.type.toLowerCase();
+                        const brand = a.brand.toLowerCase();
+                        const model = a.model.toLowerCase();
+                        const serie = a.serie.toLowerCase();
+                        return code.includes(query) || type.includes(query) || brand.includes(query) || model.includes(query) || serie.includes(query);
+                    }
+                    return true;
+                });
+
+                if (filtered.length === 0) {
+                    $tbody.append('<tr><td colspan="8" class="text-center text-secondary">No se encontraron activos tecnológicos registrados.</td></tr>');
+                    return;
+                }
+
+                filtered.forEach(a => {
+                    let badgeClass = 'badge-available';
+                    if (a.status === 'Asignado') badgeClass = 'badge-assigned';
+                    else if (a.status === 'En mantenimiento') badgeClass = 'badge-maintenance';
+                    else if (a.status === 'Dado de baja') badgeClass = 'badge-retired';
+
+                    let empName = '-';
+                    if (a.employeeId) {
+                        const emp = employees.find(e => e.id === a.employeeId);
+                        if (emp) empName = `${emp.name} ${emp.lastname}`;
+                    }
+
+                    $tbody.append(`
+                        <tr>
+                            <td class="mdl-data-table__cell--non-numeric"><strong>${a.code}</strong></td>
+                            <td class="mdl-data-table__cell--non-numeric">${a.type}</td>
+                            <td class="mdl-data-table__cell--non-numeric">${a.brand} ${a.model}</td>
+                            <td class="mdl-data-table__cell--non-numeric"><code>${a.serie}</code></td>
+                            <td class="mdl-data-table__cell--non-numeric">
+                                <span class="badge ${badgeClass}">${a.status}</span>
+                            </td>
+                            <td class="mdl-data-table__cell--non-numeric">${empName}</td>
+                            <td class="mdl-data-table__cell--non-numeric">${a.location}</td>
+                            <td class="mdl-data-table__cell--non-numeric">
+                                <button class="mdl-button mdl-button--icon btn-delete-asset" data-id="${a.id}" style="color: var(--accent-crimson);">
+                                    <i class="zmdi zmdi-delete"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    `);
+                });
+            }
+
+            // Inicializar página
+            loadDropdowns();
+            renderTable();
+
+            // Submit del formulario
+            $('#form-add-asset').on('submit', function(e) {
+                e.preventDefault();
+                const newAsset = {
+                    code: $('#codeAsset').val(),
+                    type: $('#typeAsset').val(),
+                    brand: $('#brandAsset').val(),
+                    model: $('#modelAsset').val(),
+                    serie: $('#serieAsset').val(),
+                    providerId: $('#providerAsset').val(),
+                    purchaseDate: $('#purchaseDateAsset').val(),
+                    warrantyMonths: parseInt($('#warrantyAsset').val()),
+                    status: 'Disponible',
+                    location: $('#locationAsset').val(),
+                    observations: $('#observationsAsset').val()
+                };
+
+                // Verificar duplicados de código
+                const exists = DB.getAssets().some(a => a.code.toLowerCase() === newAsset.code.toLowerCase());
+                if (exists) {
+                    swal('Error', 'Ya existe un activo con ese Código Patrimonial.', 'error');
+                    return;
+                }
+
+                DB.saveAsset(newAsset);
+                swal('¡Éxito!', 'El activo tecnológico ha sido registrado como Disponible.', 'success');
+                
+                // Limpiar formulario
+                this.reset();
+                renderTable();
+
+                // Cambiar a la pestaña de listado
+                $('#btn-list-tab').click();
+            });
+
+            // Eliminar activo
+            $(document).on('click', '.btn-delete-asset', function() {
+                const assetId = $(this).data('id');
+                const asset = DB.getAssets().find(a => a.id === assetId.toString());
+
+                if (asset && asset.status === 'Asignado') {
+                    swal('Acción denegada', 'No puedes eliminar un activo que se encuentra Asignado. Devuélvelo primero.', 'warning');
+                    return;
+                }
+
+                swal({
+                    title: '¿Estás seguro?',
+                    text: `Se eliminará el registro del activo ${asset ? asset.code : ''}.`,
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Sí, eliminar',
+                    cancelButtonText: 'Cancelar'
+                }, function(isConfirm) {
+                    if (isConfirm) {
+                        let assets = DB.getAssets();
+                        assets = assets.filter(a => a.id !== assetId.toString());
+                        DB.setData('it_assets', assets);
+                        renderTable($('#searchAsset').val(), $('#filterStatus').val());
+                        swal('Eliminado', 'El activo ha sido retirado del sistema.', 'success');
+                    }
+                });
+            });
+
+            // Buscador
+            $('#searchAsset').on('keyup', function() {
+                renderTable($(this).val(), $('#filterStatus').val());
+            });
+
+            // Filtro por Estado
+            $('#filterStatus').on('change', function() {
+                renderTable($('#searchAsset').val(), $(this).val());
+            });
+
+            // Cargar de nuevo la tabla cuando se hace clic en la pestaña de listado
+            $('#btn-list-tab').on('click', function() {
+                renderTable();
+            });
+        });
+    </script>
+</body>
+</html>
