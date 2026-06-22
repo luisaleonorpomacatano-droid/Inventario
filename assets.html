@@ -3,6 +3,7 @@
 -->
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,20 +15,25 @@
     <link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
     <link rel="stylesheet" href="css/main.css">
     <script src="js/jquery-1.11.2.min.js"></script>
-    <script src="js/material.min.js" ></script>
-    <script src="js/sweetalert2.min.js" ></script>
-    <script src="js/jquery.mCustomScrollbar.concat.min.js" ></script>
-    <script src="js/db.js" ></script>
-    <script src="js/main.js" ></script>
+    <script src="js/material.min.js"></script>
+    <script src="js/sweetalert2.min.js"></script>
+    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabaseClient.js"></script>
+    <script src="js/db.js"></script>
+    <script src="js/main.js"></script>
 </head>
+
 <body>
     <!-- Notifications area -->
     <section class="full-width container-notifications">
         <div class="full-width container-notifications-bg btn-Notification"></div>
         <section class="NotificationArea">
-            <div class="full-width NotificationArea-title">Notificaciones <i class="zmdi zmdi-close btn-Notification"></i></div>
+            <div class="full-width NotificationArea-title">Notificaciones <i
+                    class="zmdi zmdi-close btn-Notification"></i></div>
             <a href="#" class="Notification" id="notifation-1">
-                <div class="Notification-icon"><i class="zmdi zmdi-alert-triangle" style="color: var(--accent-amber);"></i></div>
+                <div class="Notification-icon"><i class="zmdi zmdi-alert-triangle"
+                        style="color: var(--accent-amber);"></i></div>
                 <div class="Notification-text">
                     <p><strong>Garantías por vencer</strong><br>Hay 2 equipos cuya garantía expira este mes.</p>
                     <small>Hace 5 minutos</small>
@@ -177,7 +183,9 @@
             </div>
             <div class="full-width header-well-text">
                 <p class="text-condensedLight">
-                    <strong>Gestión de Activos Tecnológicos:</strong> Registra y audita el equipamiento informático de la empresa. Puedes catalogar computadoras, servidores, periféricos y accesorios, controlando su estado de operación y su trazabilidad.
+                    <strong>Gestión de Activos Tecnológicos:</strong> Registra y audita el equipamiento informático de
+                    la empresa. Puedes catalogar computadoras, servidores, periféricos y accesorios, controlando su
+                    estado de operación y su trazabilidad.
                 </p>
             </div>
         </section>
@@ -200,18 +208,21 @@
                                 <form id="form-add-asset">
                                     <div class="mdl-grid">
                                         <div class="mdl-cell mdl-cell--12-col">
-                                            <legend class="text-condensedLight"><i class="zmdi zmdi-border-color"></i> &nbsp; ESPECIFICACIONES TÉCNICAS</legend>
+                                            <legend class="text-condensedLight"><i class="zmdi zmdi-border-color"></i>
+                                                &nbsp; ESPECIFICACIONES TÉCNICAS</legend>
                                         </div>
-                                        
+
                                         <div class="mdl-cell mdl-cell--6-col">
                                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                                 <input class="mdl-textfield__input" type="text" id="codeAsset" required>
-                                                <label class="mdl-textfield__label" for="codeAsset">Código Patrimonial / Activo (ej. LAP-004)</label>
+                                                <label class="mdl-textfield__label" for="codeAsset">Código Patrimonial /
+                                                    Activo (ej. LAP-004)</label>
                                             </div>
                                         </div>
 
                                         <div class="mdl-cell mdl-cell--6-col">
-                                            <label style="color: var(--text-secondary); font-size: 13px;">Tipo de Activo</label>
+                                            <label style="color: var(--text-secondary); font-size: 13px;">Tipo de
+                                                Activo</label>
                                             <select class="mdl-textfield__input" id="typeAsset" required>
                                                 <!-- Cargado dinámicamente -->
                                             </select>
@@ -219,43 +230,53 @@
 
                                         <div class="mdl-cell mdl-cell--6-col">
                                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                                <input class="mdl-textfield__input" type="text" id="brandAsset" required>
+                                                <input class="mdl-textfield__input" type="text" id="brandAsset"
+                                                    required>
                                                 <label class="mdl-textfield__label" for="brandAsset">Marca</label>
                                             </div>
                                         </div>
 
                                         <div class="mdl-cell mdl-cell--6-col">
                                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                                <input class="mdl-textfield__input" type="text" id="modelAsset" required>
+                                                <input class="mdl-textfield__input" type="text" id="modelAsset"
+                                                    required>
                                                 <label class="mdl-textfield__label" for="modelAsset">Modelo</label>
                                             </div>
                                         </div>
 
                                         <div class="mdl-cell mdl-cell--6-col">
                                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                                <input class="mdl-textfield__input" type="text" id="serieAsset" required>
-                                                <label class="mdl-textfield__label" for="serieAsset">Número de Serie</label>
+                                                <input class="mdl-textfield__input" type="text" id="serieAsset"
+                                                    required>
+                                                <label class="mdl-textfield__label" for="serieAsset">Número de
+                                                    Serie</label>
                                             </div>
                                         </div>
 
                                         <div class="mdl-cell mdl-cell--6-col">
-                                            <label style="color: var(--text-secondary); font-size: 13px;">Proveedor</label>
+                                            <label
+                                                style="color: var(--text-secondary); font-size: 13px;">Proveedor</label>
                                             <select class="mdl-textfield__input" id="providerAsset" required>
                                                 <!-- Cargado dinámicamente -->
                                             </select>
                                         </div>
 
                                         <div class="mdl-cell mdl-cell--12-col">
-                                            <legend class="text-condensedLight"><i class="zmdi zmdi-calendar"></i> &nbsp; FECHAS, GARANTÍA Y UBICACIÓN</legend>
+                                            <legend class="text-condensedLight"><i class="zmdi zmdi-calendar"></i>
+                                                &nbsp; FECHAS, GARANTÍA Y UBICACIÓN</legend>
                                         </div>
 
                                         <div class="mdl-cell mdl-cell--4-col">
-                                            <label style="color: var(--text-secondary); font-size: 13px; display: block; margin-bottom: 5px;">Fecha de Compra</label>
-                                            <input class="mdl-textfield__input" type="date" id="purchaseDateAsset" required>
+                                            <label
+                                                style="color: var(--text-secondary); font-size: 13px; display: block; margin-bottom: 5px;">Fecha
+                                                de Compra</label>
+                                            <input class="mdl-textfield__input" type="date" id="purchaseDateAsset"
+                                                required>
                                         </div>
 
                                         <div class="mdl-cell mdl-cell--4-col">
-                                            <label style="color: var(--text-secondary); font-size: 13px;">Duración de Garantía</label>
+                                            <label style="color: var(--text-secondary); font-size: 13px;">Duración de
+                                                Garantía</label>
                                             <select class="mdl-textfield__input" id="warrantyAsset" required>
                                                 <option value="12">12 meses (1 año)</option>
                                                 <option value="24">24 meses (2 años)</option>
@@ -266,7 +287,8 @@
                                         </div>
 
                                         <div class="mdl-cell mdl-cell--4-col">
-                                            <label style="color: var(--text-secondary); font-size: 13px;">Ubicación Inicial</label>
+                                            <label style="color: var(--text-secondary); font-size: 13px;">Ubicación
+                                                Inicial</label>
                                             <select class="mdl-textfield__input" id="locationAsset" required>
                                                 <option value="Oficina San Borja">Oficina San Borja</option>
                                                 <option value="Oficina Miraflores">Oficina Miraflores</option>
@@ -278,15 +300,18 @@
                                         <div class="mdl-cell mdl-cell--12-col">
                                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                                 <input class="mdl-textfield__input" type="text" id="observationsAsset">
-                                                <label class="mdl-textfield__label" for="observationsAsset">Observaciones / Detalles adicionales</label>
+                                                <label class="mdl-textfield__label"
+                                                    for="observationsAsset">Observaciones / Detalles adicionales</label>
                                             </div>
                                         </div>
                                     </div>
                                     <p class="text-center">
-                                        <button type="submit" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored bg-primary" id="btn-addAsset">
+                                        <button type="submit"
+                                            class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored bg-primary"
+                                            id="btn-addAsset">
                                             <i class="zmdi zmdi-plus"></i>
                                         </button>
-                                        <div class="mdl-tooltip" for="btn-addAsset">Agregar Activo</div>
+                                    <div class="mdl-tooltip" for="btn-addAsset">Agregar Activo</div>
                                     </p>
                                 </form>
                             </div>
@@ -304,21 +329,27 @@
                                 Listado de Activos Tecnológicos
                             </div>
                             <div class="full-width panel-content">
-                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                                <div
+                                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
                                     <form action="#" style="width: 300px; margin: 0;">
-                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable" style="padding: 0;">
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable"
+                                            style="padding: 0;">
                                             <label class="mdl-button mdl-js-button mdl-button--icon" for="searchAsset">
                                                 <i class="zmdi zmdi-search"></i>
                                             </label>
                                             <div class="mdl-textfield__expandable-holder" style="max-width: 100%;">
-                                                <input class="mdl-textfield__input" type="text" id="searchAsset" placeholder="Buscar por código, marca, modelo o serie...">
+                                                <input class="mdl-textfield__input" type="text" id="searchAsset"
+                                                    placeholder="Buscar por código, marca, modelo o serie...">
                                                 <label class="mdl-textfield__label"></label>
                                             </div>
                                         </div>
                                     </form>
                                     <div>
-                                        <label style="color: var(--text-secondary); font-size: 13px; margin-right: 10px;">Filtrar por Estado:</label>
-                                        <select class="mdl-textfield__input" id="filterStatus" style="display: inline-block; width: 180px; margin: 0; padding: 5px;">
+                                        <label
+                                            style="color: var(--text-secondary); font-size: 13px; margin-right: 10px;">Filtrar
+                                            por Estado:</label>
+                                        <select class="mdl-textfield__input" id="filterStatus"
+                                            style="display: inline-block; width: 180px; margin: 0; padding: 5px;">
                                             <option value="TODOS">Todos los estados</option>
                                             <option value="Disponible">Disponible</option>
                                             <option value="Asignado">Asignado</option>
@@ -356,7 +387,7 @@
     </section>
 
     <script>
-        $(document).ready(async function() {
+        $(document).ready(async function () {
             // Cargar datos en dropdowns
             async function loadDropdowns() {
                 const categories = await DB.getCategories();
@@ -444,7 +475,7 @@
             await renderTable();
 
             // Submit del formulario
-            $('#form-add-asset').on('submit', async function(e) {
+            $('#form-add-asset').on('submit', async function (e) {
                 e.preventDefault();
                 const newAsset = {
                     code: $('#codeAsset').val(),
@@ -470,7 +501,7 @@
 
                 await DB.saveAsset(newAsset);
                 swal('¡Éxito!', 'El activo tecnológico ha sido registrado como Disponible.', 'success');
-                
+
                 // Limpiar formulario
                 this.reset();
                 await renderTable();
@@ -480,7 +511,7 @@
             });
 
             // Eliminar activo
-            $(document).on('click', '.btn-delete-asset', async function() {
+            $(document).on('click', '.btn-delete-asset', async function () {
                 const assetId = $(this).data('id');
                 const assets = await DB.getAssets();
                 const asset = assets.find(a => a.id === assetId.toString());
@@ -497,7 +528,7 @@
                     showCancelButton: true,
                     confirmButtonText: 'Sí, eliminar',
                     cancelButtonText: 'Cancelar'
-                }, async function(isConfirm) {
+                }, async function (isConfirm) {
                     if (isConfirm) {
                         await DB.deleteAsset(assetId);
                         await renderTable($('#searchAsset').val(), $('#filterStatus').val());
@@ -507,20 +538,21 @@
             });
 
             // Buscador
-            $('#searchAsset').on('keyup', async function() {
+            $('#searchAsset').on('keyup', async function () {
                 await renderTable($(this).val(), $('#filterStatus').val());
             });
 
             // Filtro por Estado
-            $('#filterStatus').on('change', async function() {
+            $('#filterStatus').on('change', async function () {
                 await renderTable($('#searchAsset').val(), $(this).val());
             });
 
             // Cargar de nuevo la tabla cuando se hace clic en la pestaña de listado
-            $('#btn-list-tab').on('click', async function() {
+            $('#btn-list-tab').on('click', async function () {
                 await renderTable();
             });
         });
     </script>
 </body>
+
 </html>

@@ -1,25 +1,29 @@
-<!-- 
-* SCTA - Sistema de Control de Activos Tecnológicos
--->
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login | IT Asset Management</title>
+
     <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/sweetalert2.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <link rel="stylesheet" href="css/material.min.css">
     <link rel="stylesheet" href="css/material-design-iconic-font.min.css">
     <link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
     <link rel="stylesheet" href="css/main.css">
+
     <script src="js/jquery-1.11.2.min.js"></script>
-    <script src="js/material.min.js" ></script>
-    <script src="js/sweetalert2.min.js" ></script>
-    <script src="js/jquery.mCustomScrollbar.concat.min.js" ></script>
-    <script src="js/db.js" ></script>
-    <script src="js/main.js" ></script>
+    <script src="js/material.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabaseClient.js"></script>
+    <script src="js/db.js"></script>
+    <script src="js/main.js"></script>
 </head>
+
 <body>
     <div class="login-wrap">
         <div class="container-login">
@@ -27,21 +31,102 @@
                 <i class="zmdi zmdi-case-play"></i>
             </p>
             <h4 class="text-center tittles" style="color: var(--accent-cyan); margin: 0 0 5px 0;">IT ASSET MANAGER</h4>
-            <p class="text-center text-condensedLight" style="color: var(--text-secondary); margin-bottom: 30px;">Sistema de Control de Activos TI</p>
-            <form action="home.html">
+            <p class="text-center text-condensedLight" style="color: var(--text-secondary); margin-bottom: 30px;">
+                Sistema de Control de Activos TI
+            </p>
+
+            <form id="formLogin">
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="text" id="userName" required>
+                    <input class="mdl-textfield__input" type="email" id="userName" required>
                     <label class="mdl-textfield__label" for="userName">Usuario / Correo</label>
                 </div>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input class="mdl-textfield__input" type="password" id="pass" required>
                     <label class="mdl-textfield__label" for="pass">Contraseña</label>
                 </div>
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" style="width: 100%; margin-top: 25px; height: 45px;">
+                <button type="submit" id="btnLogin"
+                    class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored"
+                    style="width: 100%; margin-top: 25px; height: 45px;">
                     INICIAR SESIÓN
                 </button>
             </form>
         </div>
     </div>
+
+    <script>
+        // Usamos jQuery para asegurar que todo el documento cargó antes de enlazar el evento
+        $(document).ready(function () {
+            $('#formLogin').on('submit', async function (e) {
+                e.preventDefault(); // Bloquea la recarga de página obligatoriamente
+
+                const correo = $('#userName').val().trim();
+                const contrasena = $('#pass').val().trim();
+                const $btn = $('#btnLogin');
+                const originalText = $btn.html();
+
+                // Estado de carga
+                $btn.html('VERIFICANDO...').prop('disabled', true);
+
+                try {
+                    // Inicializamos conexión
+                    let client = null;
+                    if (window.SupabaseClient) {
+                        client = window.SupabaseClient;
+                    } else if (typeof DB !== 'undefined' && typeof DB.getClient === 'function') {
+                        client = await DB.getClient();
+                    }
+
+                    if (!client) throw new Error("Fallo al inicializar el cliente BD.");
+
+                    // Búsqueda cruzando correo Y contraseña real
+                    const { data: usuario, error } = await client
+                        .from('usuarios')
+                        .select('*, roles(nombre), areas(nombre)')
+                        .eq('correo', correo)
+                        .eq('contrasena', contrasena)
+                        .single();
+
+                    if (error || !usuario) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Acceso Denegado',
+                            text: 'El correo o la contraseña son incorrectos.'
+                        });
+                        $btn.html(originalText).prop('disabled', false);
+                        return;
+                    }
+
+                    if (usuario.estado !== 'Activo') {
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Cuenta Inactiva',
+                            text: 'Tu usuario está deshabilitado. Habla con soporte.'
+                        });
+                        $btn.html(originalText).prop('disabled', false);
+                        return;
+                    }
+
+                    // Guardamos sesión y redirigimos
+                    sessionStorage.setItem('usuarioLogueado', JSON.stringify(usuario));
+
+                    Swal.fire({
+                        icon: 'success',
+                        title: '¡Bienvenido!',
+                        text: `Hola, ${usuario.nombres} ${usuario.apellidos}`,
+                        timer: 1500,
+                        showConfirmButton: false
+                    }).then(() => {
+                        window.location.href = "home.html";
+                    });
+
+                } catch (err) {
+                    console.error("Error crítico de login:", err);
+                    Swal.fire('Error del Servidor', 'No se pudo conectar a la base de datos.', 'error');
+                    $btn.html(originalText).prop('disabled', false);
+                }
+            });
+        });
+    </script>
 </body>
+
 </html>

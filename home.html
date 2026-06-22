@@ -1,33 +1,53 @@
-<!-- 
-* SCTA - Sistema de Control de Activos Tecnológicos
--->
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dashboard | SCTA</title>
+
     <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/sweetalert2.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <link rel="stylesheet" href="css/material.min.css">
     <link rel="stylesheet" href="css/material-design-iconic-font.min.css">
     <link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
     <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        .sub-menu-options {
+            display: none;
+        }
+
+        .btn-subMenu.active+.sub-menu-options {
+            display: block;
+        }
+
+        @media (min-width: 992px) {
+            .navLateral {
+                z-index: 9999 !important;
+            }
+        }
+    </style>
+
     <script src="js/jquery-1.11.2.min.js"></script>
-    <script src="js/material.min.js" ></script>
-    <script src="js/sweetalert2.min.js" ></script>
-    <script src="js/jquery.mCustomScrollbar.concat.min.js" ></script>
-    <script src="js/db.js" ></script>
-    <script src="js/main.js" ></script>
+    <script src="js/material.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabaseClient.js"></script>
+    <script src="js/db.js"></script>
+    <script src="js/main.js"></script>
 </head>
+
 <body>
-    <!-- Notifications area -->
     <section class="full-width container-notifications">
         <div class="full-width container-notifications-bg btn-Notification"></div>
         <section class="NotificationArea">
-            <div class="full-width NotificationArea-title">Notificaciones <i class="zmdi zmdi-close btn-Notification"></i></div>
+            <div class="full-width NotificationArea-title">Notificaciones <i
+                    class="zmdi zmdi-close btn-Notification"></i></div>
             <a href="#" class="Notification" id="notifation-1">
-                <div class="Notification-icon"><i class="zmdi zmdi-alert-triangle" style="color: var(--accent-amber);"></i></div>
+                <div class="Notification-icon"><i class="zmdi zmdi-alert-triangle"
+                        style="color: var(--accent-amber);"></i></div>
                 <div class="Notification-text">
                     <p><strong>Garantías por vencer</strong><br>Hay 2 equipos cuya garantía expira este mes.</p>
                     <small>Hace 5 minutos</small>
@@ -43,7 +63,6 @@
         </section>
     </section>
 
-    <!-- navLateral (Sidebar) -->
     <section class="full-width navLateral">
         <div class="full-width navLateral-bg btn-menu"></div>
         <div class="full-width navLateral-body">
@@ -55,8 +74,8 @@
                     <img src="assets/img/avatar-male.png" alt="Avatar" class="img-responsive">
                 </div>
                 <figcaption>
-                    <span>Soporte TI Admin</span>
-                    <small>Administrador</small>
+                    <span id="sidebar-user-name">Soporte TI Admin</span>
+                    <small id="sidebar-user-role">Administrador</small>
                 </figcaption>
             </figure>
             <nav class="full-width">
@@ -150,9 +169,7 @@
         </div>
     </section>
 
-    <!-- pageContent -->
     <section class="full-width pageContent">
-        <!-- navBar -->
         <div class="full-width navBar">
             <div class="full-width navBar-options">
                 <i class="zmdi zmdi-swap btn-menu" id="btn-menu"></i>
@@ -167,7 +184,7 @@
                             <i class="zmdi zmdi-power"></i>
                             <div class="mdl-tooltip" for="btn-exit">Cerrar Sesión</div>
                         </li>
-                        <li class="text-condensedLight noLink"><small>Soporte TI</small></li>
+                        <li class="text-condensedLight noLink"><small id="topbar-user-name">Soporte TI</small></li>
                         <li class="noLink">
                             <figure>
                                 <img src="assets/img/avatar-male.png" alt="Avatar">
@@ -178,9 +195,10 @@
             </div>
         </div>
 
-        <!-- Indicadores / Mosaicos -->
-        <h3 class="text-center tittles" style="color: var(--accent-cyan); margin: 30px 0 10px 0;">DASHBOARD DE ACTIVOS TI</h3>
-        <p class="text-center text-secondary" style="margin-bottom: 20px;">Resumen en tiempo real del inventario y control tecnológico.</p>
+        <h3 class="text-center tittles" style="color: var(--accent-cyan); margin: 30px 0 10px 0;">DASHBOARD DE ACTIVOS
+            TI</h3>
+        <p class="text-center text-secondary" style="margin-bottom: 20px;">Resumen en tiempo real del inventario y
+            control tecnológico.</p>
 
         <section class="tile-container">
             <article class="tile tile-cyan" onclick="location.href='assets.html'">
@@ -227,82 +245,114 @@
             </article>
         </section>
 
-        <!-- Historial / Timeline -->
         <section class="full-width" style="margin: 40px 0; overflow-y: auto; flex: 1;">
-            <h3 class="text-center tittles" style="color: var(--accent-cyan); margin-bottom: 5px;">HISTORIAL DE MOVIMIENTOS TI</h3>
-            <p class="text-center text-secondary" style="margin-bottom: 20px;">Trazabilidad y auditoría de eventos de activos tecnológicos.</p>
-            
+            <h3 class="text-center tittles" style="color: var(--accent-cyan); margin-bottom: 5px;">HISTORIAL DE
+                MOVIMIENTOS TI</h3>
+            <p class="text-center text-secondary" style="margin-bottom: 20px;">Trazabilidad y auditoría de eventos de
+                activos tecnológicos.</p>
+
             <div id="timeline-c" class="timeline-c">
-                <!-- Se poblará dinámicamente con JS -->
             </div>
         </section>
     </section>
 
     <script>
-        $(document).ready(async function() {
-            const stats = await DB.getStats();
-            $('#stat-total').text(stats.total);
-            $('#stat-assigned').text(stats.assigned);
-            $('#stat-available').text(stats.available);
-            $('#stat-maintenance').text(stats.maintenance);
-            $('#stat-warranties').text(stats.warrantiesExpired + stats.warrantiesToExpire);
-            $('#stat-requests').text(stats.pendingRequests);
+        $(document).ready(async function () {
+            // Llenar datos de usuario logueado en la interfaz (Opcional, pero da buen toque)
+            const sessionData = JSON.parse(sessionStorage.getItem('usuarioLogueado') || '{}');
+            if (sessionData.nombres) {
+                $('#sidebar-user-name, #topbar-user-name').text(sessionData.nombres + ' ' + sessionData.apellidos);
+                if (sessionData.roles && sessionData.roles.nombre) {
+                    $('#sidebar-user-role').text(sessionData.roles.nombre);
+                }
+            }
 
-            const assets = await DB.getAssets();
-            const employees = await DB.getEmployees();
-            const assignments = await DB.getAssignments();
-            const maintenance = await DB.getMaintenance();
-            
-            let logs = [];
-            
-            assignments.forEach(asg => {
-                const asset = assets.find(a => a.id === asg.assetId);
-                const emp = employees.find(e => e.id === asg.employeeId);
-                logs.push({
-                    title: 'Asignación de Activo',
-                    desc: `El equipo <strong>${asset ? asset.brand + ' ' + asset.model : 'Equipo'} (${asset ? asset.code : 'Desconocido'})</strong> fue asignado a <strong>${emp ? emp.name + ' ' + emp.lastname : 'Colaborador'}</strong> (Área: ${asset ? asset.area : 'N/A'}).`,
-                    date: asg.date,
-                    icon: 'zmdi-assignment-account',
-                    color: 'var(--accent-blue)'
-                });
-            });
+            try {
+                // 1. Cargamos las estadísticas con seguridad de db.js
+                if (typeof DB !== 'undefined' && typeof DB.getStats === 'function') {
+                    const stats = await DB.getStats() || {};
 
-            maintenance.forEach(m => {
-                const asset = assets.find(a => a.id === m.assetId);
-                logs.push({
-                    title: `Mantenimiento ${m.type}`,
-                    desc: `El equipo <strong>${asset ? asset.brand + ' ' + asset.model : 'Equipo'} (${asset ? asset.code : 'Desconocido'})</strong> ingresó a soporte. Detalle: ${m.description}. Técnico responsable: ${m.technician}.`,
-                    date: m.startDate,
-                    icon: 'zmdi-wrench',
-                    color: m.statusFinal === 'Completado' ? 'var(--accent-emerald)' : 'var(--accent-amber)'
-                });
-            });
-            
-            logs.sort((a, b) => new Date(b.date) - new Date(a.date));
-            
-            const $timeline = $('#timeline-c');
-            $timeline.empty();
-            if (logs.length === 0) {
-                $timeline.html('<p class="text-center text-secondary">No hay movimientos recientes registrados.</p>');
-            } else {
-                logs.forEach(log => {
-                    $timeline.append(`
-                        <div class="timeline-c-box">
-                            <div class="timeline-c-box-icon" style="--accent-color: ${log.color}">
-                                <i class="zmdi ${log.icon}"></i>
-                            </div>
-                            <div class="timeline-c-box-content">
-                                <h4>${log.title}</h4>
-                                <p>${log.desc}</p>
-                                <span class="timeline-date" style="--accent-color: ${log.color}">
-                                    <i class="zmdi zmdi-calendar-note"></i> ${log.date}
-                                </span>
-                            </div>
-                        </div>
-                    `);
-                });
+                    $('#stat-total').text(stats.total || 0);
+                    $('#stat-assigned').text(stats.assigned || 0);
+                    $('#stat-available').text(stats.available || 0);
+                    $('#stat-maintenance').text(stats.maintenance || 0);
+
+                    const exp = stats.warrantiesExpired || 0;
+                    const toExp = stats.warrantiesToExpire || 0;
+                    $('#stat-warranties').text(exp + toExp);
+                    $('#stat-requests').text(stats.pendingRequests || 0);
+                }
+
+                // 2. Cargamos los datos del Timeline
+                if (typeof DB !== 'undefined' && typeof DB.getAssets === 'function') {
+                    const assets = await DB.getAssets() || [];
+                    const employees = await DB.getEmployees() || [];
+                    const assignments = await DB.getAssignments() || [];
+                    const maintenance = await DB.getMaintenance() || [];
+
+                    let logs = [];
+
+                    if (Array.isArray(assignments)) {
+                        assignments.forEach(asg => {
+                            const asset = assets.find(a => a.id === asg.assetId);
+                            const emp = employees.find(e => e.id === asg.employeeId);
+                            logs.push({
+                                title: 'Asignación de Activo',
+                                desc: `El equipo <strong>${asset ? asset.brand + ' ' + asset.model : 'Equipo'} (${asset ? asset.code : 'Desconocido'})</strong> fue asignado a <strong>${emp ? emp.nombres + ' ' + emp.apellidos : 'Colaborador'}</strong>.`,
+                                date: asg.date || new Date().toISOString(),
+                                icon: 'zmdi-assignment-account',
+                                color: 'var(--accent-blue)'
+                            });
+                        });
+                    }
+
+                    if (Array.isArray(maintenance)) {
+                        maintenance.forEach(m => {
+                            const asset = assets.find(a => a.id === m.assetId);
+                            logs.push({
+                                title: `Mantenimiento ${m.type || 'General'}`,
+                                desc: `El equipo <strong>${asset ? asset.brand + ' ' + asset.model : 'Equipo'} (${asset ? asset.code : 'Desconocido'})</strong> ingresó a soporte. Detalle: ${m.description || 'Sin detalle'}.`,
+                                date: m.startDate || new Date().toISOString(),
+                                icon: 'zmdi-wrench',
+                                color: m.statusFinal === 'Completado' ? 'var(--accent-emerald)' : 'var(--accent-amber)'
+                            });
+                        });
+                    }
+
+                    const $timeline = $('#timeline-c');
+                    $timeline.empty();
+
+                    if (logs.length === 0) {
+                        $timeline.html('<p class="text-center text-secondary">No hay movimientos recientes registrados.</p>');
+                    } else {
+                        logs.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+                        logs.forEach(log => {
+                            const dateOnly = new Date(log.date).toLocaleDateString();
+                            $timeline.append(`
+                                <div class="timeline-c-box">
+                                    <div class="timeline-c-box-icon" style="--accent-color: ${log.color}">
+                                        <i class="zmdi ${log.icon}"></i>
+                                    </div>
+                                    <div class="timeline-c-box-content">
+                                        <h4>${log.title}</h4>
+                                        <p>${log.desc}</p>
+                                        <span class="timeline-date" style="--accent-color: ${log.color}">
+                                            <i class="zmdi zmdi-calendar-note"></i> ${dateOnly}
+                                        </span>
+                                    </div>
+                                </div>
+                            `);
+                        });
+                    }
+                }
+
+            } catch (error) {
+                console.error("Error cargando dashboard:", error);
+                $('#timeline-c').html('<p class="text-center" style="color:red;">Error de conexión. Intenta recargar.</p>');
             }
         });
     </script>
 </body>
+
 </html>

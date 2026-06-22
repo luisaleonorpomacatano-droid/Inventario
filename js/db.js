@@ -19,7 +19,15 @@ const DB = {
     async getClient() {
         if (this.client) return this.client;
 
-        // Cargar script de Supabase de CDN
+        // ── Prioridad 1: usar el cliente centralizado de supabaseClient.js ──
+        if (window.SupabaseClient) {
+            console.info('[DB] Usando cliente Supabase de supabaseClient.js');
+            this.client = window.SupabaseClient;
+            this.checkAndSeed();
+            return this.client;
+        }
+
+        // ── Prioridad 2: cargar Supabase desde CDN y leer config.json ────
         await this.loadScript('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2');
 
         let url = 'https://jsyvxgztrpotexsfqpji.supabase.co';
@@ -32,13 +40,14 @@ const DB = {
                 const config = await response.json();
                 if (config.supabaseAnonKey && config.supabaseAnonKey !== 'TU_SUPABASE_ANON_KEY_AQUI') {
                     key = config.supabaseAnonKey.trim();
-                    url = config.supabaseUrl || url;
+                    url = (config.supabaseUrl || url).replace(/\/rest\/v1\/?$/, '');
                 }
             }
         } catch (e) {
             console.log('No se pudo cargar la configuración de config/config.json, usando almacenamiento local:', e);
         }
 
+        // ── Prioridad 3: solicitar clave al usuario ──────────────────────
         if (!key) {
             await new Promise((resolve) => {
                 setTimeout(() => {
@@ -61,7 +70,7 @@ const DB = {
         }
 
         this.client = window.supabase.createClient(url, key);
-        
+
         // Ejecutar semillero automático en segundo plano si las tablas están vacías
         this.checkAndSeed();
 

@@ -1,8 +1,6 @@
-<!-- 
-* SCTA - Sistema de Control de Activos Tecnológicos
--->
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,20 +12,24 @@
     <link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
     <link rel="stylesheet" href="css/main.css">
     <script src="js/jquery-1.11.2.min.js"></script>
-    <script src="js/material.min.js" ></script>
-    <script src="js/sweetalert2.min.js" ></script>
-    <script src="js/jquery.mCustomScrollbar.concat.min.js" ></script>
-    <script src="js/db.js" ></script>
-    <script src="js/main.js" ></script>
+    <script src="js/material.min.js"></script>
+    <script src="js/sweetalert2.min.js"></script>
+    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabaseClient.js"></script>
+    <script src="js/db.js"></script>
+    <script src="js/main.js"></script>
 </head>
+
 <body>
-    <!-- Notifications area -->
     <section class="full-width container-notifications">
         <div class="full-width container-notifications-bg btn-Notification"></div>
         <section class="NotificationArea">
-            <div class="full-width NotificationArea-title">Notificaciones <i class="zmdi zmdi-close btn-Notification"></i></div>
+            <div class="full-width NotificationArea-title">Notificaciones <i
+                    class="zmdi zmdi-close btn-Notification"></i></div>
             <a href="#" class="Notification" id="notifation-1">
-                <div class="Notification-icon"><i class="zmdi zmdi-alert-triangle" style="color: var(--accent-amber);"></i></div>
+                <div class="Notification-icon"><i class="zmdi zmdi-alert-triangle"
+                        style="color: var(--accent-amber);"></i></div>
                 <div class="Notification-text">
                     <p><strong>Garantías por vencer</strong><br>Hay 2 equipos cuya garantía expira este mes.</p>
                     <small>Hace 5 minutos</small>
@@ -36,7 +38,6 @@
         </section>
     </section>
 
-    <!-- navLateral -->
     <section class="full-width navLateral">
         <div class="full-width navLateral-bg btn-menu"></div>
         <div class="full-width navLateral-body">
@@ -143,9 +144,7 @@
         </div>
     </section>
 
-    <!-- pageContent -->
     <section class="full-width pageContent">
-        <!-- navBar -->
         <div class="full-width navBar">
             <div class="full-width navBar-options">
                 <i class="zmdi zmdi-swap btn-menu" id="btn-menu"></i>
@@ -177,7 +176,9 @@
             </div>
             <div class="full-width header-well-text">
                 <p class="text-condensedLight">
-                    <strong>Control de Garantías TI:</strong> Supervisa el estado de cobertura de garantía de todos los equipos del inventario. El sistema calcula dinámicamente el vencimiento y emite alertas para equipos cuya garantía está vencida o por expirar en los próximos 60 días.
+                    <strong>Control de Garantías TI:</strong> Supervisa el estado de cobertura de garantía de todos los
+                    equipos del inventario. El sistema calcula dinámicamente el vencimiento y emite alertas para equipos
+                    cuya garantía está vencida o por expirar en los próximos 60 días.
                 </p>
             </div>
         </section>
@@ -203,7 +204,6 @@
                                     </tr>
                                 </thead>
                                 <tbody id="table-warranties-body">
-                                    <!-- Poblar dinámicamente -->
                                 </tbody>
                             </table>
                         </div>
@@ -214,76 +214,85 @@
     </section>
 
     <script>
-        $(document).ready(async function() {
-            function renderWarranties() {
-                const assets = await DB.getAssets();
-                const providers = await DB.getProviders();
-                const $tbody = $('#table-warranties-body');
-                $tbody.empty();
+        $(document).ready(async function () {
+            // ✅ CORRECCIÓN: Se agregó la palabra 'async' a la función
+            async function renderWarranties() {
+                try {
+                    // Ahora los await funcionarán perfectamente
+                    const assets = await DB.getAssets();
+                    const providers = await DB.getProviders();
+                    const $tbody = $('#table-warranties-body');
+                    $tbody.empty();
 
-                if (assets.length === 0) {
-                    $tbody.append('<tr><td colspan="7" class="text-center text-secondary">No hay activos registrados para calcular garantías.</td></tr>');
-                    return;
-                }
-
-                const now = new Date();
-
-                assets.forEach(a => {
-                    const prov = providers.find(p => p.id === a.providerId);
-                    const provName = prov ? prov.name : 'Desconocido';
-
-                    let formattedExp = 'N/A';
-                    let badgeClass = 'badge-retired';
-                    let statusText = 'Sin registro';
-
-                    if (a.purchaseDate) {
-                        const purchaseDateObj = new Date(a.purchaseDate);
-                        const warrantyMonths = parseInt(a.warrantyMonths) || 0;
-                        
-                        // Calcular fecha vencimiento
-                        const expiryDate = new Date(purchaseDateObj);
-                        expiryDate.setMonth(expiryDate.getMonth() + warrantyMonths);
-                        
-                        // Formato fecha vencimiento (yyyy-mm-dd)
-                        const year = expiryDate.getFullYear();
-                        const month = String(expiryDate.getMonth() + 1).padStart(2, '0');
-                        const day = String(expiryDate.getDate()).padStart(2, '0');
-                        formattedExp = `${year}-${month}-${day}`;
-
-                        // Calcular días restantes
-                        const diffTime = expiryDate - now;
-                        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-
-                        if (diffDays < 0) {
-                            badgeClass = 'badge-retired';
-                            statusText = 'Vencida';
-                        } else if (diffDays <= 60) {
-                            badgeClass = 'badge-maintenance';
-                            statusText = 'Por Vencer';
-                        } else {
-                            badgeClass = 'badge-available';
-                            statusText = 'Vigente';
-                        }
+                    if (assets.length === 0) {
+                        $tbody.append('<tr><td colspan="7" class="text-center text-secondary">No hay activos registrados para calcular garantías.</td></tr>');
+                        return;
                     }
 
-                    $tbody.append(`
-                        <tr>
-                            <td class="mdl-data-table__cell--non-numeric"><strong>${a.code}</strong></td>
-                            <td class="mdl-data-table__cell--non-numeric">${a.type} ${a.brand} ${a.model}</td>
-                            <td class="mdl-data-table__cell--non-numeric">${provName}</td>
-                            <td class="mdl-data-table__cell--non-numeric">${a.purchaseDate || 'N/A'}</td>
-                            <td class="mdl-data-table__cell--non-numeric">${a.warrantyMonths} meses</td>
-                            <td class="mdl-data-table__cell--non-numeric"><code>${formattedExp}</code></td>
-                            <td class="mdl-data-table__cell--non-numeric">
-                                <span class="badge ${badgeClass}">${statusText}</span>
-                            </td>
-                        </tr>
-                    `);
-                });
+                    const now = new Date();
+
+                    assets.forEach(a => {
+                        const prov = providers.find(p => p.id === a.providerId);
+                        const provName = prov ? prov.name : 'Desconocido';
+
+                        let formattedExp = 'N/A';
+                        let badgeClass = 'badge-retired';
+                        let statusText = 'Sin registro';
+
+                        if (a.purchaseDate) {
+                            const purchaseDateObj = new Date(a.purchaseDate);
+                            const warrantyMonths = parseInt(a.warrantyMonths) || 0;
+
+                            // Calcular fecha vencimiento
+                            const expiryDate = new Date(purchaseDateObj);
+                            expiryDate.setMonth(expiryDate.getMonth() + warrantyMonths);
+
+                            // Formato fecha vencimiento (yyyy-mm-dd)
+                            const year = expiryDate.getFullYear();
+                            const month = String(expiryDate.getMonth() + 1).padStart(2, '0');
+                            const day = String(expiryDate.getDate()).padStart(2, '0');
+                            formattedExp = `${year}-${month}-${day}`;
+
+                            // Calcular días restantes
+                            const diffTime = expiryDate - now;
+                            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+                            if (diffDays < 0) {
+                                badgeClass = 'badge-retired';
+                                statusText = 'Vencida';
+                            } else if (diffDays <= 60) {
+                                badgeClass = 'badge-maintenance';
+                                statusText = 'Por Vencer';
+                            } else {
+                                badgeClass = 'badge-available';
+                                statusText = 'Vigente';
+                            }
+                        }
+
+                        $tbody.append(`
+                            <tr>
+                                <td class="mdl-data-table__cell--non-numeric"><strong>${a.code}</strong></td>
+                                <td class="mdl-data-table__cell--non-numeric">${a.type} ${a.brand} ${a.model}</td>
+                                <td class="mdl-data-table__cell--non-numeric">${provName}</td>
+                                <td class="mdl-data-table__cell--non-numeric">${a.purchaseDate || 'N/A'}</td>
+                                <td class="mdl-data-table__cell--non-numeric">${a.warrantyMonths} meses</td>
+                                <td class="mdl-data-table__cell--non-numeric"><code>${formattedExp}</code></td>
+                                <td class="mdl-data-table__cell--non-numeric">
+                                    <span class="badge ${badgeClass}">${statusText}</span>
+                                </td>
+                            </tr>
+                        `);
+                    });
+                } catch (error) {
+                    console.error("Error al cargar las garantías:", error);
+                    $('#table-warranties-body').html('<tr><td colspan="7" class="text-center" style="color:red;">Error al cargar datos desde Supabase. Revisa la consola.</td></tr>');
+                }
             }
 
-            renderWarranties();
+            // Llamamos a la función
+            await renderWarranties();
         });
     </script>
 </body>
+
 </html>
