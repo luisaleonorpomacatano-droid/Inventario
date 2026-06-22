@@ -39,7 +39,7 @@
   // Coinciden con las variables definidas en .env:
   //   NEXT_PUBLIC_SUPABASE_URL  → SUPABASE_URL
   //   NEXT_PUBLIC_SUPABASE_ANON_KEY → SUPABASE_ANON_KEY
-  const SUPABASE_URL      = 'https:example.co'; // Reemplaza con tu URL real
+  const SUPABASE_URL      = 'https:example.co'; // Reemplaza con tu URL real pru
   const SUPABASE_ANON_KEY = 'eyJhbGc';// Reemplaza con tu clave anónima real
 
   // ── Mapa de tablas ─────────────────────────────────────────
